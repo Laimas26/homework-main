@@ -1,0 +1,18 @@
+{
+    "sourceFile": "code/src/DataFixtures/Articles/article_6.txt",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1680522132858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1680522132858,
+            "name": "Commit-0",
+            "content": "The ambitious Ocean Cleanup Project has achieved a remarkable milestone, reducing the Great Pacific Garbage Patch by a staggering 90%.\nUsing advanced cleanup technology and innovative strategies, the project has successfully removed millions of tons of plastic debris from the ocean, significantly mitigating the environmental impact on marine life and ecosystems.\nThis extraordinary achievement demonstrates the power of human ingenuity and collaboration in tackling the global issue of plastic pollution, inspiring further action to preserve our planet's oceans."
+        }
+    ]
+}

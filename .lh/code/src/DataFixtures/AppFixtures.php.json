@@ -1,0 +1,34 @@
+{
+    "sourceFile": "code/src/DataFixtures/AppFixtures.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1680522071308,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680522089877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,9 @@\n             'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n         ];\n         yield [\n             'name' => 'Ocean Cleanup Project Succeeds',\n-            'img' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2',\n+            'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n         ];\n     }\n }\n"
+                },
+                {
+                    "date": 1680522199662,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,8 +59,8 @@\n         ];\n         yield [\n             'name' => 'Ocean Cleanup Project Succeeds',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n-            'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n+            'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n         ];\n     }\n }\n"
+                },
+                {
+                    "date": 1680522226360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n      */\n     protected function getArticleData(): iterable\n     {\n         yield [\n-            'name' => 'AI Transforms Recycling Industry',\n+            'name' => 'AI Transforms Recycling gdsgsd',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n             ];\n \n"
+                },
+                {
+                    "date": 1680522235054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n      */\n     protected function getArticleData(): iterable\n     {\n         yield [\n-            'name' => 'AI Transforms Recycling gdsgsd',\n+            'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n             ];\n \n"
+                }
+            ],
+            "date": 1680522071308,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\DataFixtures;\n\nuse App\\Entity\\Article;\nuse Doctrine\\Bundle\\FixturesBundle\\Fixture;\nuse Doctrine\\Persistence\\ObjectManager;\n\nclass AppFixtures extends Fixture\n{\n    public function load(ObjectManager $manager): void\n    {\n        foreach ($this->getArticleData() as $articleData) {\n            $article = new Article();\n\n            $article->setTitle($articleData['name']);\n            $article->setImage($articleData['img']);\n            $article->setText($articleData['text']);\n\n            $manager->persist($article);\n        }\n\n        $manager->flush();\n    }\n\n    /**\n     * @return iterable<array>\n     */\n    protected function getArticleData(): iterable\n    {\n        yield [\n            'name' => 'AI Transforms Recycling Industry',\n            'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n            'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n            ];\n\n        yield [\n            'name' => 'Teleportation Breakthrough',\n            'img' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb',\n            'text' => file_get_contents(__DIR__ . '/Articles/article_2.txt'),\n        ];\n\n        yield [\n            'name' => 'Urban Farming Skyrockets',\n            'img' => 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8',\n            'text' => file_get_contents(__DIR__ . '/Articles/article_3.txt'),\n        ];\n\n        yield [\n            'name' => \"World's First Holographic Smartphone\",\n            'img' => 'https://images.unsplash.com/photo-1570101945621-945409a6370f',\n            'text' => file_get_contents(__DIR__ . '/Articles/article_4.txt'),\n        ];\n\n        yield [\n            'name' => 'Self-Driving Cars Reduce Traffic Fatalities',\n            'img' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2',\n            'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n        ];\n        yield [\n            'name' => 'Ocean Cleanup Project Succeeds',\n            'img' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2',\n            'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n        ];\n    }\n}\n"
+        }
+    ]
+}
