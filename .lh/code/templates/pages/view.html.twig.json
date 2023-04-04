@@ -1,0 +1,370 @@
+{
+    "sourceFile": "code/templates/pages/view.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 88,
+            "patches": [
+                {
+                    "date": 1680614507825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680614526606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     {{\n-                        if(1 == 1)\n-                            'dd';\n+                            'dd'\n                     }}\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680614618407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     {{\n-                            'dd'\n+                            str_word_count(article.title);\n                     }}\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680614625083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     {{\n-                            str_word_count(article.title);\n+                            str_word_count(article.title)\n                     }}\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680614653380,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,11 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                    {{\n-                            str_word_count(article.title)\n-                    }}\n+                    <?php\n+                            echo str_word_count(article.title);\n+                    ?>\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614668648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     <?php\n-                            echo str_word_count(article.title);\n+                            echo str_word_count($article.title);\n                     ?>\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680614680281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     <?php\n-                            echo str_word_count($article.title);\n+                            echo article.title;\n                     ?>\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680614694863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                    <?php\n-                            echo article.title;\n-                    ?>\n+                            {{ echo article.title }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614706983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {{ echo article.title }}\n+                            {{ article.title }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614860938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {{ article.title }}\n+                            {{ {% set numberOfWords = article.title|split(' ')|length %} }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614879075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {{ {% set numberOfWords = article.title|split(' ')|length %} }}\n+                            {{ {% set numberOfWords = article.title|split(' ')|length 3} }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614896819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {{ {% set numberOfWords = article.title|split(' ')|length 3} }}\n+                            {{ set numberOfWords = article.title|split(' ')|length 3 }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614963807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {{ set numberOfWords = article.title|split(' ')|length 3 }}\n+                            {% set numberOfWords = entry.summary|split(' ')|length %}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614975298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = entry.summary|split(' ')|length %}\n+                            {% set numberOfWords = article.title|split(' ')|length %}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680614999052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length %}\n+                            {{ numberOfWords }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680615016192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length %}\n+                            {% set numberOfWords = article.title|split(' ')|3 %}\n                             {{ numberOfWords }}\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615029493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|3 %}\n+                            {% set numberOfWords = article.title|split(' ')|length %}\n                             {{ numberOfWords }}\n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615144907,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,14 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length %}\n-                            {{ numberOfWords }}\n+                            {{ \n+                                foreach(numberOfWords as number)\n+                                    {\n+                                        number\n+                                    }\n+                            }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680615358448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,14 +7,12 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length %}\n-                            {{ \n-                                foreach(numberOfWords as number)\n-                                    {\n-                                        number\n-                                    }\n-                            }}\n+                            {% for number in numberOfWords %}\n+                                {{ number }}\n+                            {% endfor %}\n+                            \n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680615370117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length %}\n                             {% for number in numberOfWords %}\n-                                {{ number }}\n+                                {% number %}\n                             {% endfor %}\n                             \n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680615388210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length %}\n                             {% for number in numberOfWords %}\n-                                {% number %}\n+                            \n                             {% endfor %}\n                             \n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680615532539,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,12 +7,10 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length %}\n-                            {% for number in numberOfWords %}\n+                            {{ numberOfWords.length }}\n                             \n-                            {% endfor %}\n-                            \n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680615590632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length %}\n-                            {{ numberOfWords.length }}\n+                            {% set numberOfWords = article.title|split(' ')|length > 3 %}\n+                            {{ numberOfWords.length() }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615612447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length > 3 %}\n-                            {{ numberOfWords.length() }}\n+                            {% set numberOfWords = article.title|split(' ')|length >= 3 %}\n+                            {{ numberOfWords }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615634313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length >= 3 %}\n+                            {% set numberOfWords = article.title|split(' ')|length > 5 %}\n                             {{ numberOfWords }}\n                             \n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680615640293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length > 5 %}\n+                            {% set numberOfWords = article.title|split(' ')|length > 10 %}\n                             {{ numberOfWords }}\n                             \n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680615646773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length > 10 %}\n+                            {% set numberOfWords = article.title|split(' ')|length > 1 %}\n                             {{ numberOfWords }}\n                             \n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680615653472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length > 1 %}\n+                            {% set numberOfWords = article.title|split(' ')|length > 0 %}\n                             {{ numberOfWords }}\n                             \n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680615692386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ numberOfWords }}\n+                            {{ 'testas'|length }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615723863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ 'testas'|length }}\n+                            {{ 'testas'|length < 7 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615737201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ 'testas'|length < 7 }}\n+                            {{ 'testas'|length < 0 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615756589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ 'testas'|length < 0 }}\n+                            {{ ['testas', 'tes']|length < 0 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615762910,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['testas', 'tes']|length < 0 }}\n+                            {{ ['testas', 'tes']|length > 3 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615817518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['testas', 'tes']|length > 3 }}\n+                            {{ ['tes']|length > 3 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615824756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes']|length > 3 }}\n+                            {{ ['tes']|length}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615832950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes']|length}}\n+                            {{ ['tes', 'testas']|length}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615841573,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas']|length}}\n+                            {{ ['tes', 'testas', 'sdsa']|length}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615869484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa']|length}}\n+                            {{ ['tes', 'testas', 'sdsa']|length = 3}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615876951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa']|length = 3}}\n+                            {{ ['tes', 'testas', 'sdsa']|length == 3}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615885622,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa']|length == 3}}\n+                            {{ ['tes', 'testas', 'sdsa']|length == 4}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615890970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa']|length == 4}}\n+                            {{ ['tes', 'testas', 'sdsa','agag']|length == 4}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615901235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa','agag']|length == 4}}\n+                            {{ ['tes', 'testas', 'sdsa','agag']|length == 6}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615907219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa','agag']|length == 6}}\n+                            {{ ['tes', 'testas', 'sdsa','agag']|length == 3}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615926100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa','agag']|length == 3}}\n+                            {{ ['tes', 'testas', 'sdsa','agag', 'gg']|length == 5}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615933093,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa','agag', 'gg']|length == 5}}\n+                            {{ ['tes', 'testas', 'sdsa','agag', 'gg']|length == 3}}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615966164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['tes', 'testas', 'sdsa','agag', 'gg']|length == 3}}\n+                            {{ print_r(article.title|split(' ')) }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615980656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ print_r(article.title|split(' ')) }}\n+                            <?php print_r(article.title|split(' ')) ?>\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680615999443,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            <?php print_r(article.title|split(' ')) ?>\n+                            <?php echo article.title|split(' '); ?>\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616010692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            <?php echo article.title|split(' '); ?>\n+                            <?php echo {{ article.title|split(' ') }}; ?>\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616295109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            <?php echo {{ article.title|split(' ') }}; ?>\n+                            {{ ['fsad', 'ddd', 'tasfaf']|length }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616329006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,14 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ')|length > 0 %}\n-                            {{ ['fsad', 'ddd', 'tasfaf']|length }}\n+                            {% set numberOfWords = article.title|split(' ') %}\n+                            {{ if(['fsad', 'ddd', 'tasfaf']|length)\n+                             {\n+\n+                             }\n+                             }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616347803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,14 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {{ if(['fsad', 'ddd', 'tasfaf']|length)\n+                            {{ numberOfWords }}\n+                            {# {{ if(['fsad', 'ddd', 'tasfaf']|length)\n                              {\n \n                              }\n-                             }}\n+                             }} #}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616389262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,11 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {{ numberOfWords }}\n+                            {% for word in numberOfWords %}\n+                                word\n+                            {% endfor %}\n                             {# {{ if(['fsad', 'ddd', 'tasfaf']|length)\n                              {\n \n                              }\n"
+                },
+                {
+                    "date": 1680616403285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% for word in numberOfWords %}\n-                                word\n+                                {{ word }}\n                             {% endfor %}\n                             {# {{ if(['fsad', 'ddd', 'tasfaf']|length)\n                              {\n \n"
+                },
+                {
+                    "date": 1680616441276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% for word in numberOfWords %}\n-                                {{ word }}\n+                                {{ word|length }}\n                             {% endfor %}\n                             {# {{ if(['fsad', 'ddd', 'tasfaf']|length)\n                              {\n \n"
+                },
+                {
+                    "date": 1680616587268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,16 +7,14 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n+                            {% set numberOfWords2 = article.title|split(' ') %}\n                             {% for word in numberOfWords %}\n-                                {{ word|length }}\n+                                {% if word|length > 3 %}\n+                                    \n+                                {% endif %}\n                             {% endfor %}\n-                            {# {{ if(['fsad', 'ddd', 'tasfaf']|length)\n-                             {\n-\n-                             }\n-                             }} #}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616595118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {% set numberOfWords2 = article.title|split(' ') %}\n+                            {% set numberOfWords2 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n                                     \n                                 {% endif %}\n"
+                },
+                {
+                    "date": 1680616618626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,12 +7,12 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {% set numberOfWords2 %}\n+                            {% set numberOfWords2 = [] %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    \n+                                    {{ numberOfWords2 }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616627342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {% set numberOfWords2 = [] %}\n+                            {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n                                     {{ numberOfWords2 }}\n                                 {% endif %}\n"
+                },
+                {
+                    "date": 1680616637962,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2 }}\n+                                    {{ numberOfWords2++ }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616677945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,11 +10,12 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2++ }}\n+                                    {% numberOfWords2++ %}\n                                 {% endif %}\n                             {% endfor %}\n+                            {{ numberOfWords2 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616701206,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {% numberOfWords2++ %}\n+                                    {{ numberOfWords2++ }}\n                                 {% endif %}\n                             {% endfor %}\n                             {{ numberOfWords2 }}\n                             \n"
+                },
+                {
+                    "date": 1680616710297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2++ }}\n+                                    <?php numberOfWords2++ ?>\n                                 {% endif %}\n                             {% endfor %}\n                             {{ numberOfWords2 }}\n                             \n"
+                },
+                {
+                    "date": 1680616724898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    <?php numberOfWords2++ ?>\n+                                    <?php {{ numberOfWords2++ }} ?>\n                                 {% endif %}\n                             {% endfor %}\n                             {{ numberOfWords2 }}\n                             \n"
+                },
+                {
+                    "date": 1680616761087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,12 +10,11 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    <?php {{ numberOfWords2++ }} ?>\n+                                    {{ word }}\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ numberOfWords2 }}\n                             \n                     </p>\n                 </div>\n \n"
+                },
+                {
+                    "date": 1680616774386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n-                                {% if word|length > 3 %}\n+                                {% if word|length > 9 %}\n                                     {{ word }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n"
+                },
+                {
+                    "date": 1680616789243,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n-                                {% if word|length > 9 %}\n+                                {% if word|length > 3 %}\n                                     {{ word }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n"
+                },
+                {
+                    "date": 1680616825475,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ word }}\n+                                    {{ numberOfWords2 }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616842097,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2 }}\n+                                    {{ numberOfWords2 = numberOfWords2 + 1 }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616857470,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2 = numberOfWords2 + 1 }}\n+                                    {{ numberOfWords2 += 1 }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616865484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2 += 1 }}\n+                                    {{ numberOfWords2 + 1 }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616898358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2 + 1 }}\n+                                    {% numberOfWords2 + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616916742,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {% numberOfWords2 + 1 %}\n+                                    {{ numberOfWords2 + 1 }}\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616945487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,13 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n+                    <?php \n+                        numberOfWords2\n+                    ?>\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {% set numberOfWords2 = 0 %}\n+                            {# {% set numberOfWords2 = 0 %} #}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n                                     {{ numberOfWords2 + 1 }}\n                                 {% endif %}\n"
+                },
+                {
+                    "date": 1680616951182,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     <?php \n-                        numberOfWords2\n+                        numberOfWords2 = 0;\n                     ?>\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {# {% set numberOfWords2 = 0 %} #}\n                             {% for word in numberOfWords %}\n"
+                },
+                {
+                    "date": 1680616972641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,15 +7,17 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                     <?php \n-                        numberOfWords2 = 0;\n+                        $numberOfWords2 = 0;\n                     ?>\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {# {% set numberOfWords2 = 0 %} #}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    {{ numberOfWords2 + 1 }}\n+                                    <?php \n+                                        $numberOfWords2++;\n+                                    ?>\n                                 {% endif %}\n                             {% endfor %}\n                             \n                     </p>\n"
+                },
+                {
+                    "date": 1680616978472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            \n+                            {{ $numberOfWords2 }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680616986731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ $numberOfWords2 }}\n+                            {{ numberOfWords2 }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680617003396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ numberOfWords2 }}\n+                            <?php $numberOfWords2 ?>\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680617023769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            <?php $numberOfWords2 ?>\n+                            <?php echo $numberOfWords2 ?>\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680617030809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            <?php echo $numberOfWords2 ?>\n+                            <?php echo $numberOfWords2; ?>\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680617043188,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            <?php echo $numberOfWords2; ?>\n+                            <?php echo 'ss'; ?>\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680617053877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,8 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                    <?php \n-                        $numberOfWords2 = 0;\n-                    ?>\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {# {% set numberOfWords2 = 0 %} #}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n@@ -18,9 +15,8 @@\n                                         $numberOfWords2++;\n                                     ?>\n                                 {% endif %}\n                             {% endfor %}\n-                            <?php echo 'ss'; ?>\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680618013584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,14 +7,11 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {# {% set numberOfWords2 = 0 %} #}\n+                            {{ set numberOfWords2 = 0 }}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                    <?php \n-                                        $numberOfWords2++;\n-                                    ?>\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680618027872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {{ set numberOfWords2 = 0 }}\n+                            {{ numberOfWords2 = 0 }}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n                                 {% endif %}\n                             {% endfor %}\n"
+                },
+                {
+                    "date": 1680618040829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set numberOfWords = article.title|split(' ') %}\n-                            {{ numberOfWords2 = 0 }}\n+                            {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n                                 {% endif %}\n                             {% endfor %}\n"
+                },
+                {
+                    "date": 1680618053466,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n+                                {{ numberOfWords2 }}\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680618087606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                {{ numberOfWords2 }}\n+                                {{ numberOfWords2 += 1 }}\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680618099241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                {{ numberOfWords2 += 1 }}\n+                                {{ numberOfWords2++ }}\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                }
+            ],
+            "date": 1680614507825,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block main %}\n    <main>\n        <div class=\"py-5 bg-light\">\n            <div class=\"container\">\n                <div class=\"py-5 text-center\">\n                    <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                    <p class=\"text-muted\">\n                    {{\n                        if(1 == 1)\n                            'dd';\n                    }}\n                    </p>\n                </div>\n\n                <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n\n                <div class=\"lead mb-4 py-5\">{{ article.text | raw }}</div>\n\n                <div class=\"d-grid gap-2 d-sm-flex justify-content-sm-center\">\n                    <a href=\"{{ path('home') }}\" type=\"button\" class=\"btn btn-secondary btn-lg px-4 gap-3\">Back</a>\n                </div>\n            </div>\n        </div>\n    </main>\n{% endblock %}\n"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 35,
+            "activePatchIndex": 42,
             "patches": [
                 {
                     "date": 1680526206093,
@@ -148,6 +148,34 @@
                 {
                     "date": 1680557262118,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,11 +32,13 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false\n             ))\n-            ->add('save', SubmitType::class, array(\n-                'class' => 'btn btn-primary'\n-            ))\n+            ->add('save', SubmitType::class, [\n+                'attr' => [\n+                    'class' => 'btn btn-primary'\n+                    ]\n+            ])\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver): void\n"
+                },
+                {
+                    "date": 1680610916872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,12 @@\n                     ]\n             ])\n             ->add('image', FileType::class, array(\n                 'required' => false,\n-                'mapped' => false\n+                'mapped' => false,\n+                'attr' => [\n+                    'class' => ''\n+                ]\n             ))\n             ->add('save', SubmitType::class, [\n                 'attr' => [\n                     'class' => 'btn btn-primary'\n"
+                },
+                {
+                    "date": 1680610942392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false,\n                 'attr' => [\n-                    'class' => ''\n+                    'class' => 'form-control'\n                 ]\n             ))\n             ->add('save', SubmitType::class, [\n                 'attr' => [\n"
+                },
+                {
+                    "date": 1680610972952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false,\n                 'attr' => [\n-                    'class' => 'form-control'\n+                    'class' => ''\n                 ]\n             ))\n             ->add('save', SubmitType::class, [\n                 'attr' => [\n"
+                },
+                {
+                    "date": 1680610983718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false,\n                 'attr' => [\n-                    'class' => ''\n+                    'class' => 'form-control'\n                 ]\n             ))\n             ->add('save', SubmitType::class, [\n                 'attr' => [\n"
+                },
+                {
+                    "date": 1680611032225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,11 +32,18 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false,\n                 'attr' => [\n-                    'class' => 'form-control'\n+                    'class' => 'form-control '\n                 ]\n             ))\n+            ->add('imageUrl', FileType::class, array(\n+                'required' => false,\n+                'mapped' => false,\n+                'attr' => [\n+                    'class' => 'form-control '\n+                ]\n+            ))\n             ->add('save', SubmitType::class, [\n                 'attr' => [\n                     'class' => 'btn btn-primary'\n                     ]\n"
+                },
+                {
+                    "date": 1680611039087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,11 +35,9 @@\n                 'attr' => [\n                     'class' => 'form-control '\n                 ]\n             ))\n-            ->add('imageUrl', FileType::class, array(\n-                'required' => false,\n-                'mapped' => false,\n+            ->add('imageUrl', TextType::class, array(\n                 'attr' => [\n                     'class' => 'form-control '\n                 ]\n             ))\n"
+                },
+                {
+                    "date": 1680611069531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,13 +35,13 @@\n                 'attr' => [\n                     'class' => 'form-control '\n                 ]\n             ))\n-            ->add('imageUrl', TextType::class, array(\n-                'attr' => [\n-                    'class' => 'form-control '\n-                ]\n-            ))\n+            // ->add('imageFromUrl', TextType::class, array(\n+            //     'attr' => [\n+            //         'class' => 'form-control '\n+            //     ]\n+            // ))\n             ->add('save', SubmitType::class, [\n                 'attr' => [\n                     'class' => 'btn btn-primary'\n                     ]\n"
                 }
             ],
             "date": 1680526206093,

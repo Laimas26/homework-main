@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 23,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1680523756550,
@@ -100,6 +100,10 @@
                 {
                     "date": 1680557281438,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,10 +14,8 @@\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n \r\n-                {{ form_widget(form) }}\r\n-                <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\r\n                 {{ form_end(form) }}\r\n                 \r\n \r\n                 {# <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\r\n"
+                },
+                {
+                    "date": 1680610863200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n \r\n+                \r\n                 {{ form_end(form) }}\r\n                 \r\n \r\n                 {# <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\r\n"
                 }
             ],
             "date": 1680523756550,

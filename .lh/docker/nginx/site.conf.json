@@ -1,0 +1,30 @@
+{
+    "sourceFile": "docker/nginx/site.conf",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1680613357631,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680613374489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n # Example for development environment\n server {\n     listen 80 default_server;\n     server_name _;\n-    client_max_body_size 0\n+    client_max_body_size 1000\n \n     index index.php index.html;\n     root /code/public;\n \n"
+                },
+                {
+                    "date": 1680613422738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n # Example for development environment\n server {\n     listen 80 default_server;\n     server_name _;\n-    client_max_body_size 1000\n+    client_max_body_size 0;\n \n     index index.php index.html;\n     root /code/public;\n \n"
+                },
+                {
+                    "date": 1680613433224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n # Example for development environment\n server {\n     listen 80 default_server;\n     server_name _;\n-    client_max_body_size 0;\n+    client_max_body_size 1000;\n \n     index index.php index.html;\n     root /code/public;\n \n"
+                }
+            ],
+            "date": 1680613357631,
+            "name": "Commit-0",
+            "content": "# Example for development environment\nserver {\n    listen 80 default_server;\n    server_name _;\n    client_max_body_size 0\n\n    index index.php index.html;\n    root /code/public;\n\n    location / {\n        # try to serve file directly, fallback to index.php\n        try_files $uri /index.php$is_args$args;\n    }\n\n    location ~ \\.php$ {\n        resolver 127.0.0.11 valid=10s;\n        set $upstream_php_symfony php;\n\n        try_files $uri =404;\n        fastcgi_split_path_info ^(.+\\.php)(/.+)$;\n        fastcgi_pass $upstream_php_symfony:9000;\n        fastcgi_index index.php;\n        include fastcgi_params;\n\n        \n        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;\n        fastcgi_param PATH_INFO $fastcgi_path_info;\n    }\n}\n"
+        }
+    ]
+}

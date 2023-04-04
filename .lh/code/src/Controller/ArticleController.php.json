@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 38,
+            "activePatchIndex": 61,
             "patches": [
                 {
                     "date": 1680525383451,
@@ -160,6 +160,98 @@
                 {
                     "date": 1680560040382,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,11 +42,11 @@\n         {\n             if($image)\n                 if($article->getImage() != null)\n                 {\n-                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage() ))\n+                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n-\n+                        \n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680611545526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,8 +44,10 @@\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n+                        $this->getParameter('kernel.project.dir') . $article->getImage();\n+\n                         \n                     }\n                 }\n             else\n"
+                },
+                {
+                    "date": 1680611597583,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,9 +46,9 @@\n                     if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n                         $this->getParameter('kernel.project.dir') . $article->getImage();\n \n-                        \n+                        $newFileName = uniqid() . '.' . $image->guessExtension();\n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680611944723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n use App\\Form\\ArticleFormType;\n use App\\Repository\\ArticleRepository;\n use Doctrine\\ORM\\EntityManagerInterface;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n+use Symfony\\Component\\HttpFoundation\\File\\Exception\\FileException;\n use Symfony\\Component\\HttpFoundation\\Request;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n@@ -47,8 +48,14 @@\n                     {\n                         $this->getParameter('kernel.project.dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n+\n+                        try {\n+                            \n+                        } catch (FileException $e) {\n+                            \n+                        }\n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680612005371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,8 +50,12 @@\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n+                            $image->move(\n+                                $this->getParameter('kernel.project.dir' . 'public/uploads',\n+                                $newFileName)\n+                            )\n                             \n                         } catch (FileException $e) {\n                             \n                         }\n"
+                },
+                {
+                    "date": 1680612011699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \n                         try {\n                             $image->move(\n                                 $this->getParameter('kernel.project.dir' . 'public/uploads',\n-                                $newFileName)\n+                                $newFileName);\n                             )\n                             \n                         } catch (FileException $e) {\n                             \n"
+                },
+                {
+                    "date": 1680612023325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n \n                         try {\n                             $image->move(\n                                 $this->getParameter('kernel.project.dir' . 'public/uploads',\n-                                $newFileName);\n+                                $newFileName)\n                             )\n                             \n                         } catch (FileException $e) {\n                             \n"
+                },
+                {
+                    "date": 1680612041621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,10 +51,9 @@\n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n                             $image->move(\n-                                $this->getParameter('kernel.project.dir' . 'public/uploads',\n-                                $newFileName)\n+                                $this->getParameter('kernel.project.dir' . 'public/uploads', $newFileName);\n                             )\n                             \n                         } catch (FileException $e) {\n                             \n"
+                },
+                {
+                    "date": 1680612073141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,13 +51,13 @@\n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n                             $image->move(\n-                                $this->getParameter('kernel.project.dir' . 'public/uploads', $newFileName);\n+                                $this->getParameter('kernel.project.dir' . 'public/uploads', $newFileName)\n                             )\n                             \n                         } catch (FileException $e) {\n-                            \n+                            return new Response($e->getMessage());\n                         }\n                     }\n                 }\n             else\n"
+                },
+                {
+                    "date": 1680612122654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n                             $image->move(\n-                                $this->getParameter('kernel.project.dir' . 'public/uploads', $newFileName)\n+                                $this->getParameter('kernel.project.dir') . 'public/uploads', $newFileName)\n                             )\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n"
+                },
+                {
+                    "date": 1680612131629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,10 +51,9 @@\n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n                             $image->move(\n-                                $this->getParameter('kernel.project.dir') . 'public/uploads', $newFileName)\n-                            )\n+                                $this->getParameter('kernel.project.dir') . 'public/uploads', $newFileName);\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n"
+                },
+                {
+                    "date": 1680612141814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,10 +50,9 @@\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n-                            $image->move(\n-                                $this->getParameter('kernel.project.dir') . 'public/uploads', $newFileName);\n+                            $image->move($this->getParameter('kernel.project.dir') . 'public/uploads', $newFileName);\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n"
+                },
+                {
+                    "date": 1680612154681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,10 @@\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n-                            $image->move($this->getParameter('kernel.project.dir') . 'public/uploads', $newFileName);\n+                            $image->move($this->getParameter('kernel.project.dir') . 'public/uploads',\n+                            $newFileName);\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n"
+                },
+                {
+                    "date": 1680612161956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,10 +50,11 @@\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n-                            $image->move($this->getParameter('kernel.project.dir') . 'public/uploads',\n-                            $newFileName);\n+                            $image->move(\n+                                $this->getParameter('kernel.project.dir') . 'public/uploads',\n+                                $newFileName);\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n"
+                },
+                {
+                    "date": 1680612283636,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,8 +57,11 @@\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n+\n+                        $article->setImage('/uploads/' . $newFileName)\n+\n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680612304827,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,10 @@\n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n \n-                        $article->setImage('/uploads/' . $newFileName)\n+                        $article->setImage('/uploads/' . $newFileName);\n+                        $this->entityManager->flush();\n \n                     }\n                 }\n             else\n"
+                },
+                {
+                    "date": 1680612316620,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,10 @@\n \n                         $article->setImage('/uploads/' . $newFileName);\n                         $this->entityManager->flush();\n \n+                        return return $this->redirectToRoute('home');\n+\n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680612325235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,10 +61,9 @@\n \n                         $article->setImage('/uploads/' . $newFileName);\n                         $this->entityManager->flush();\n \n-                        return return $this->redirectToRoute('home');\n-\n+                        return $this->redirectToRoute('home');\n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680620170762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n                             $image->move(\n-                                $this->getParameter('kernel.project.dir') . 'public/uploads',\n+                                $this->getParameter('kernel.project_dir') . 'public/uploads',\n                                 $newFileName);\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n"
+                },
+                {
+                    "date": 1680620354531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,11 +43,11 @@\n         {\n             if($image)\n                 if($article->getImage() != null)\n                 {\n-                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage()) || $article->getImage() != null)\n+                    if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n-                        $this->getParameter('kernel.project.dir') . $article->getImage();\n+                        $this->getParameter('kernel.project_dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n"
+                },
+                {
+                    "date": 1680620632555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,8 +45,9 @@\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n+                        dd('ss');\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n"
+                },
+                {
+                    "date": 1680620795018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,9 +45,9 @@\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n-                        dd('ss');\n+                        dd($image);\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n"
+                },
+                {
+                    "date": 1680621008118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,17 +45,16 @@\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n-                        dd($image);\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n-                            $image->move(\n+                            dd($image->move(\n                                 $this->getParameter('kernel.project_dir') . 'public/uploads',\n-                                $newFileName);\n+                                $newFileName));\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n"
+                },
+                {
+                    "date": 1680621038299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n                             dd($image->move(\n-                                $this->getParameter('kernel.project_dir') . 'public/uploads',\n+                                $this->getParameter('kernel.project_dir') . '/public/uploads',\n                                 $newFileName));\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n"
                 }
             ],
             "date": 1680525383451,

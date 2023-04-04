@@ -31,8 +31,16 @@ class ArticleFormType extends AbstractType
             ])
             ->add('image', FileType::class, array(
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'attr' => [
+                    'class' => 'form-control '
+                ]
             ))
+            // ->add('imageFromUrl', TextType::class, array(
+            //     'attr' => [
+            //         'class' => 'form-control '
+            //     ]
+            // ))
             ->add('save', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-primary'

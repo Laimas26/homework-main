@@ -73,18 +73,19 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), 'form_start');
         echo "
 
+                
                 ";
-        // line 18
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 18, $this->source); })()), 'form_end');
+        // line 19
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 19, $this->source); })()), 'form_end');
         echo "
                 
 
                 ";
-        // line 24
+        // line 25
         echo "
                 <div class=\"d-grid gap-2 d-sm-flex justify-content-sm-center\">
                     <a href=\"";
-        // line 26
+        // line 27
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\" type=\"button\" class=\"btn btn-secondary btn-lg px-4 gap-3\">Back</a>
                 </div>
@@ -109,7 +110,7 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
 
     public function getDebugInfo()
     {
-        return array (  88 => 26,  84 => 24,  78 => 18,  73 => 16,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  89 => 27,  85 => 25,  79 => 19,  73 => 16,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -131,6 +132,7 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
 
                 {{ form_start(form) }}
 
+                
                 {{ form_end(form) }}
                 
 

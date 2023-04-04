@@ -7,6 +7,7 @@ use App\Form\ArticleFormType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,9 +44,25 @@ class ArticleController extends AbstractController
             if($image)
                 if($article->getImage() != null)
                 {
-                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage()) || $article->getImage() != null)
+                    if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)
                     {
-                        
+                        $this->getParameter('kernel.project_dir') . $article->getImage();
+
+                        $newFileName = uniqid() . '.' . $image->guessExtension();
+
+                        try {
+                            $image->move(
+                                $this->getParameter('kernel.project_dir') . '/public/uploads',
+                                $newFileName);
+                            
+                        } catch (FileException $e) {
+                            return new Response($e->getMessage());
+                        }
+
+                        $article->setImage('/uploads/' . $newFileName);
+                        $this->entityManager->flush();
+
+                        return $this->redirectToRoute('home');
                     }
                 }
             else
