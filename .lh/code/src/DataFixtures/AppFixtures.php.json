@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1680522071308,
@@ -24,6 +24,14 @@
                 {
                     "date": 1680522235054,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n      */\n     protected function getArticleData(): iterable\n     {\n         yield [\n-            'name' => 'AI Transforms Recycling gdsgsd',\n+            'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n             ];\n \n"
+                },
+                {
+                    "date": 1680529936160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,8 +31,9 @@\n         yield [\n             'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n+            'updated_at' => \n             ];\n \n         yield [\n             'name' => 'Teleportation Breakthrough',\n"
+                },
+                {
+                    "date": 1680530451526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,8 @@\n         yield [\n             'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n-            'updated_at' => \n             ];\n \n         yield [\n             'name' => 'Teleportation Breakthrough',\n"
                 }
             ],
             "date": 1680522071308,

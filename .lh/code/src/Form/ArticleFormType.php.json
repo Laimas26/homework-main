@@ -1,0 +1,158 @@
+{
+    "sourceFile": "code/src/Form/ArticleFormType.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 35,
+            "patches": [
+                {
+                    "date": 1680526206093,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680526542222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,13 @@\n         $builder\n             ->add('title')\n             ->add('text')\n             ->add('image')\n+            ->add('updated_at')\n         ;\n     }\n \n-    public function configureOptions(App\\Form\\OptionsResolver $resolver): void\n+    public function configureOptions(OptionsResolver $resolver): void\n     {\n         $resolver->setDefaults([\n             'data_class' => Article::class,\n         ]);\n"
+                },
+                {
+                    "date": 1680533452841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,8 @@\n         $builder\n             ->add('title')\n             ->add('text')\n             ->add('image')\n-            ->add('updated_at')\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver): void\n"
+                },
+                {
+                    "date": 1680533768138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Form;\n \n use App\\Entity\\Article;\n+use Doctrine\\DBAL\\Types\\TextType;\n use Symfony\\Component\\Form\\AbstractType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n \n@@ -11,9 +12,9 @@\n {\n     public function buildForm(FormBuilderInterface $builder, array $options): void\n     {\n         $builder\n-            ->add('title')\n+            ->add('title', TextType::class)\n             ->add('text')\n             ->add('image')\n         ;\n     }\n"
+                },
+                {
+                    "date": 1680533796536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,10 @@\n \n namespace App\\Form;\n \n use App\\Entity\\Article;\n-use Doctrine\\DBAL\\Types\\TextType;\n use Symfony\\Component\\Form\\AbstractType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n \n class ArticleFormType extends AbstractType\n"
+                },
+                {
+                    "date": 1680533821602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,11 @@\n {\n     public function buildForm(FormBuilderInterface $builder, array $options): void\n     {\n         $builder\n-            ->add('title', TextType::class)\n+            ->add('title', TextType::class, [\n+                \n+            ])\n             ->add('text')\n             ->add('image')\n         ;\n     }\n"
+                },
+                {
+                    "date": 1680534006333,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,11 @@\n     public function buildForm(FormBuilderInterface $builder, array $options): void\n     {\n         $builder\n             ->add('title', TextType::class, [\n-                \n+                'attr' => array(\n+                    'class' =>\n+                )\n             ])\n             ->add('text')\n             ->add('image')\n         ;\n"
+                },
+                {
+                    "date": 1680534042455,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' =>\n+                    'class' => 'block border-b-2'\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534050691,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' => 'block border-b-2'\n+                    'class' => 'block border-b-2 w-full'\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534066601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' => 'block border-b-2 w-full'\n+                    'class' => 'block border-b-2 w-full h-20 text-6xl'\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534073129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' => 'block border-b-2 w-full h-20 text-6xl'\n+                    'class' => 'bg-trasparent block border-b-2 w-full h-20 text-6xl'\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534085117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' => 'bg-trasparent block border-b-2 w-full h-20 text-6xl'\n+                    'class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none'\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534185072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,10 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none'\n+                    'class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none',\n+                    'placeholder' => 'Enter title'\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534413053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,10 +14,11 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => array(\n-                    'class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none',\n+                    ['class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none',\n                     'placeholder' => 'Enter title'\n+                    ]\n                 )\n             ])\n             ->add('text')\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534439891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,13 +13,12 @@\n     public function buildForm(FormBuilderInterface $builder, array $options): void\n     {\n         $builder\n             ->add('title', TextType::class, [\n-                'attr' => array(\n-                    ['class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none',\n+                'attr' => [\n+                    'class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none',\n                     'placeholder' => 'Enter title'\n                     ]\n-                )\n             ])\n             ->add('text')\n             ->add('image')\n         ;\n"
+                },
+                {
+                    "date": 1680534607872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => [\n-                    'class' => 'block border-b-2 w-full h-20 text-6xl bg-trasparent outline-none',\n+                    'class' => 'form-control',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n             ->add('text')\n"
+                },
+                {
+                    "date": 1680534640598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,14 @@\n                     'class' => 'form-control',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n-            ->add('text')\n+            ->add('text', TextType::class, [\n+                'attr' => [\n+                    'class' => 'form-control',\n+                    'placeholder' => 'Enter text'\n+                    ]\n+            ])\n             ->add('image')\n         ;\n     }\n \n"
+                },
+                {
+                    "date": 1680534658287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n namespace App\\Form;\n \n use App\\Entity\\Article;\n use Symfony\\Component\\Form\\AbstractType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n \n@@ -18,9 +19,9 @@\n                     'class' => 'form-control',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n-            ->add('text', TextType::class, [\n+            ->add('text', TextareaType::class, [\n                 'attr' => [\n                     'class' => 'form-control',\n                     'placeholder' => 'Enter text'\n                     ]\n"
+                },
+                {
+                    "date": 1680534706926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n                 'attr' => [\n-                    'class' => 'form-control',\n+                    'class' => 'form-control form-control-lg',\n                     'placeholder' => 'Enter text'\n                     ]\n             ])\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534832090,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n                 'attr' => [\n-                    'class' => 'form-control form-control-lg',\n+                    'class' => 'form-control h-75',\n                     'placeholder' => 'Enter text'\n                     ]\n             ])\n             ->add('image')\n"
+                },
+                {
+                    "date": 1680534929750,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,10 @@\n             ])\n             ->add('text', TextareaType::class, [\n                 'attr' => [\n                     'class' => 'form-control h-75',\n-                    'placeholder' => 'Enter text'\n+                    'placeholder' => 'Enter text',\n+                    'rows' => '15'\n                     ]\n             ])\n             ->add('image')\n         ;\n"
+                },
+                {
+                    "date": 1680534948166,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n             ->add('text', TextareaType::class, [\n                 'attr' => [\n                     'class' => 'form-control h-75',\n                     'placeholder' => 'Enter text',\n-                    'rows' => '15'\n+                    'rows' => '20'\n                     ]\n             ])\n             ->add('image')\n         ;\n"
+                },
+                {
+                    "date": 1680534971000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n                 'attr' => [\n-                    'class' => 'form-control h-75',\n+                    'class' => 'form-control',\n                     'placeholder' => 'Enter text',\n                     'rows' => '20'\n                     ]\n             ])\n"
+                },
+                {
+                    "date": 1680534978747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => [\n-                    'class' => 'form-control',\n+                    'class' => 'form-control h-50',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n"
+                },
+                {
+                    "date": 1680534985735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => [\n-                    'class' => 'form-control h-50',\n+                    'class' => 'form-control',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n"
+                },
+                {
+                    "date": 1680535129400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => [\n-                    'class' => 'form-control',\n+                    'class' => 'form-control form-floating',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n"
+                },
+                {
+                    "date": 1680535156092,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     {\n         $builder\n             ->add('title', TextType::class, [\n                 'attr' => [\n-                    'class' => 'form-control form-floating',\n+                    'class' => 'form-control',\n                     'placeholder' => 'Enter title'\n                     ]\n             ])\n             ->add('text', TextareaType::class, [\n"
+                },
+                {
+                    "date": 1680535166252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n             ->add('text', TextareaType::class, [\n                 'attr' => [\n                     'class' => 'form-control',\n                     'placeholder' => 'Enter text',\n-                    'rows' => '20'\n+                    'rows' => '15'\n                     ]\n             ])\n             ->add('image')\n         ;\n"
+                },
+                {
+                    "date": 1680535656993,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n namespace App\\Form;\n \n use App\\Entity\\Article;\n use Symfony\\Component\\Form\\AbstractType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n@@ -26,9 +27,15 @@\n                     'placeholder' => 'Enter text',\n                     'rows' => '15'\n                     ]\n             ])\n-            ->add('image')\n+            ->add('image', FileType::class, [\n+                'attr' => [\n+                    'class' => 'py-10',\n+                    'placeholder' => 'Enter text',\n+                    'rows' => '15'\n+                    ]\n+            ])\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver): void\n"
+                },
+                {
+                    "date": 1680535667156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,10 +30,8 @@\n             ])\n             ->add('image', FileType::class, [\n                 'attr' => [\n                     'class' => 'py-10',\n-                    'placeholder' => 'Enter text',\n-                    'rows' => '15'\n                     ]\n             ])\n         ;\n     }\n"
+                },
+                {
+                    "date": 1680539062632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n                     ]\n             ])\n             ->add('image', FileType::class, [\n                 'attr' => [\n-                    'class' => 'py-10',\n+                    'class' => 'py-10 form-control'\n                     ]\n             ])\n         ;\n     }\n"
+                },
+                {
+                    "date": 1680539070771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n                     'placeholder' => 'Enter text',\n                     'rows' => '15'\n                     ]\n             ])\n-            ->add('image', FileType::class, [\n+            ->add('image', TextType::class, [\n                 'attr' => [\n                     'class' => 'py-10 form-control'\n                     ]\n             ])\n"
+                },
+                {
+                    "date": 1680539173970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,11 +27,11 @@\n                     'placeholder' => 'Enter text',\n                     'rows' => '15'\n                     ]\n             ])\n-            ->add('image', TextType::class, [\n+            ->add('image', FileType::class, [\n                 'attr' => [\n-                    'class' => 'py-10 form-control'\n+                    'class' => 'py-10'\n                     ]\n             ])\n         ;\n     }\n"
+                },
+                {
+                    "date": 1680539349946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,13 +27,12 @@\n                     'placeholder' => 'Enter text',\n                     'rows' => '15'\n                     ]\n             ])\n-            ->add('image', FileType::class, [\n-                'attr' => [\n-                    'class' => 'py-10'\n-                    ]\n-            ])\n+            ->add('image', FileType::class, array(\n+                'required' => false,\n+                'mapped' => false\n+            ))\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver): void\n"
+                },
+                {
+                    "date": 1680557176701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n \n use App\\Entity\\Article;\n use Symfony\\Component\\Form\\AbstractType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n@@ -31,8 +32,11 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false\n             ))\n+            ->add('save', SubmitType::class, array(\n+                'class' => 'btn btn-primary'\n+            ))\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver): void\n"
+                },
+                {
+                    "date": 1680557262118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,11 +32,13 @@\n             ->add('image', FileType::class, array(\n                 'required' => false,\n                 'mapped' => false\n             ))\n-            ->add('save', SubmitType::class, array(\n-                'class' => 'btn btn-primary'\n-            ))\n+            ->add('save', SubmitType::class, [\n+                'attr' => [\n+                    'class' => 'btn btn-primary'\n+                    ]\n+            ])\n         ;\n     }\n \n     public function configureOptions(OptionsResolver $resolver): void\n"
+                }
+            ],
+            "date": 1680526206093,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Article;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass ArticleFormType extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options): void\n    {\n        $builder\n            ->add('title')\n            ->add('text')\n            ->add('image')\n        ;\n    }\n\n    public function configureOptions(App\\Form\\OptionsResolver $resolver): void\n    {\n        $resolver->setDefaults([\n            'data_class' => Article::class,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

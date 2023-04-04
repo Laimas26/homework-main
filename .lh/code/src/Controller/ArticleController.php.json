@@ -1,0 +1,170 @@
+{
+    "sourceFile": "code/src/Controller/ArticleController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 38,
+            "patches": [
+                {
+                    "date": 1680525383451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680525417077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n <?php\n \n namespace App\\Controller;\n \n+use App\\Entity\\Article;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n"
+                },
+                {
+                    "date": 1680525606313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Controller;\n \n use App\\Entity\\Article;\n+use App\\Repository\\ArticleRepository;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n@@ -19,8 +20,11 @@\n \n     #[Route('/article/edit/{id}', name: 'article_edit')]\n     public function editArticle(Article $article): Response\n     {\n+        $article = $this.ArticleRepository->find($id);\n+\n+\n         return $this->render('pages/edit.html.twig', [\n             'article' => $article,\n         ]);\n     }\n"
+                },
+                {
+                    "date": 1680525611627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n \n     #[Route('/article/edit/{id}', name: 'article_edit')]\n     public function editArticle(Article $article): Response\n     {\n-        $article = $this.ArticleRepository->find($id);\n+        $article = $this->ArticleRepository->find($id);\n \n \n         return $this->render('pages/edit.html.twig', [\n             'article' => $article,\n"
+                },
+                {
+                    "date": 1680525636350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n         ]);\n     }\n \n     #[Route('/article/edit/{id}', name: 'article_edit')]\n-    public function editArticle(Article $article): Response\n+    public function editArticle(Article $article, $id): Response\n     {\n         $article = $this->ArticleRepository->find($id);\n \n \n"
+                },
+                {
+                    "date": 1680525677482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,11 +20,10 @@\n \n     #[Route('/article/edit/{id}', name: 'article_edit')]\n     public function editArticle(Article $article, $id): Response\n     {\n-        $article = $this->ArticleRepository->find($id);\n \n-\n+        \n         return $this->render('pages/edit.html.twig', [\n             'article' => $article,\n         ]);\n     }\n"
+                },
+                {
+                    "date": 1680530104845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Controller;\n \n use App\\Entity\\Article;\n+use App\\Form\\ArticleFormType;\n use App\\Repository\\ArticleRepository;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n@@ -20,9 +21,9 @@\n \n     #[Route('/article/edit/{id}', name: 'article_edit')]\n     public function editArticle(Article $article, $id): Response\n     {\n-\n+        $form = $this->createForm(ArticleFormType::class, $article);\n         \n         return $this->render('pages/edit.html.twig', [\n             'article' => $article,\n         ]);\n"
+                },
+                {
+                    "date": 1680530112428,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n     {\n         $form = $this->createForm(ArticleFormType::class, $article);\n         \n         return $this->render('pages/edit.html.twig', [\n+            'form' => $form,\n             'article' => $article,\n         ]);\n     }\n }\n"
+                },
+                {
+                    "date": 1680533518900,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     {\n         $form = $this->createForm(ArticleFormType::class, $article);\n         \n         return $this->render('pages/edit.html.twig', [\n-            'form' => $form,\n+            'form' => $form->createView(),\n             'article' => $article,\n         ]);\n     }\n }\n"
+                },
+                {
+                    "date": 1680543556002,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n use App\\Entity\\Article;\n use App\\Form\\ArticleFormType;\n use App\\Repository\\ArticleRepository;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n+use Symfony\\Component\\HttpFoundation\\Request;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n@@ -19,11 +20,13 @@\n         ]);\n     }\n \n     #[Route('/article/edit/{id}', name: 'article_edit')]\n-    public function editArticle(Article $article, $id): Response\n+    public function editArticle(Article $article, Request $request): Response\n     {\n         $form = $this->createForm(ArticleFormType::class, $article);\n+\n+        $form->handleRequest($)\n         \n         return $this->render('pages/edit.html.twig', [\n             'form' => $form->createView(),\n             'article' => $article,\n"
+                },
+                {
+                    "date": 1680543569842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     public function editArticle(Article $article, Request $request): Response\n     {\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n-        $form->handleRequest($)\n+        $form->handleRequest($request);\n         \n         return $this->render('pages/edit.html.twig', [\n             'form' => $form->createView(),\n             'article' => $article,\n"
+                },
+                {
+                    "date": 1680543598309,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,10 @@\n     {\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n         $form->handleRequest($request);\n+        $image = $form->get('image')->getData();\n+\n         \n         return $this->render('pages/edit.html.twig', [\n             'form' => $form->createView(),\n             'article' => $article,\n"
+                },
+                {
+                    "date": 1680543637679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,20 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n+        if ($form->isSubmitted() && $form->isValid())\n+        {\n+            if($image)\n+            {\n+\n+            }\n+            else\n+            {\n+                \n+            }\n+        }\n+\n         \n         return $this->render('pages/edit.html.twig', [\n             'form' => $form->createView(),\n             'article' => $article,\n"
+                },
+                {
+                    "date": 1680543660622,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n \n             }\n             else\n             {\n-                \n+                dd('OK');\n             }\n         }\n \n         \n"
+                },
+                {
+                    "date": 1680543782879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n \n             }\n             else\n             {\n-                dd('OK');\n+                $article->setTitle($form->get('title')->getData());\n             }\n         }\n \n         \n"
+                },
+                {
+                    "date": 1680543792696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,8 +36,9 @@\n             }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n+                $article->setText($form->get('text')->getData());\n             }\n         }\n \n         \n"
+                },
+                {
+                    "date": 1680544258771,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,25 @@\n \n use App\\Entity\\Article;\n use App\\Form\\ArticleFormType;\n use App\\Repository\\ArticleRepository;\n+use Doctrine\\ORM\\EntityManagerInterface;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n use Symfony\\Component\\HttpFoundation\\Request;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n {\n+    private $em;\n+    private $articleRepository;\n+\n+    public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n+    {\n+        $this->em = $em;\n+        $this->$articleRepository = $articleRepository;\n+    }\n+\n     #[Route('/article', name: 'app_article')]\n     public function index(): Response\n     {\n         return $this->render('article/index.html.twig', [\n"
+                },
+                {
+                    "date": 1680544282285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,8 +47,10 @@\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n+\n+                $this->em->flush();\n             }\n         }\n \n         \n"
+                },
+                {
+                    "date": 1680544314556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,8 +49,10 @@\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 $this->em->flush();\n+\n+                return $this->redirectToRoute('home');\n             }\n         }\n \n         \n"
+                },
+                {
+                    "date": 1680544396032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,64 @@\n+<?php\n+\n+namespace App\\Controller;\n+\n+use App\\Entity\\Article;\n+use App\\Form\\ArticleFormType;\n+use App\\Repository\\ArticleRepository;\n+use Doctrine\\ORM\\EntityManagerInterface;\n+use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n+use Symfony\\Component\\HttpFoundation\\Request;\n+use Symfony\\Component\\HttpFoundation\\Response;\n+use Symfony\\Component\\Routing\\Annotation\\Route;\n+\n+class ArticleController extends AbstractController\n+{\n+    private $em;\n+    private $articleRepository;\n+\n+    public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n+    {\n+        $this->em = $em;\n+        $this->articleRepository = $articleRepository;\n+    }\n+\n+    #[Route('/article', name: 'app_article')]\n+    public function index(): Response\n+    {\n+        return $this->render('article/index.html.twig', [\n+            'controller_name' => 'ArticleController',\n+        ]);\n+    }\n+\n+    #[Route('/article/edit/{id}', name: 'article_edit')]\n+    public function editArticle(Article $article, Request $request): Response\n+    {\n+        $form = $this->createForm(ArticleFormType::class, $article);\n+\n+        $form->handleRequest($request);\n+        $image = $form->get('image')->getData();\n+\n+        if ($form->isSubmitted() && $form->isValid())\n+        {\n+            if($image)\n+            {\n+\n+            }\n+            else\n+            {\n+                $article->setTitle($form->get('title')->getData());\n+                $article->setText($form->get('text')->getData());\n+\n+                $this->em->flush();\n+\n+                return $this->redirectToRoute('home');\n+            }\n+        }\n+\n+        \n+        return $this->render('pages/edit.html.twig', [\n+            'form' => $form->createView(),\n+            'article' => $article,\n+        ]);\n+    }\n+}\n"
+                },
+                {
+                    "date": 1680545062858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,9 @@\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n-                $this->em->flush();\n+                // $this->em->flush();\n \n                 return $this->redirectToRoute('home');\n             }\n         }\n@@ -61,68 +61,4 @@\n             'article' => $article,\n         ]);\n     }\n }\n-<?php\n-\n-namespace App\\Controller;\n-\n-use App\\Entity\\Article;\n-use App\\Form\\ArticleFormType;\n-use App\\Repository\\ArticleRepository;\n-use Doctrine\\ORM\\EntityManagerInterface;\n-use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n-use Symfony\\Component\\HttpFoundation\\Request;\n-use Symfony\\Component\\HttpFoundation\\Response;\n-use Symfony\\Component\\Routing\\Annotation\\Route;\n-\n-class ArticleController extends AbstractController\n-{\n-    private $em;\n-    private $articleRepository;\n-\n-    public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n-    {\n-        $this->em = $em;\n-        $this->$articleRepository = $articleRepository;\n-    }\n-\n-    #[Route('/article', name: 'app_article')]\n-    public function index(): Response\n-    {\n-        return $this->render('article/index.html.twig', [\n-            'controller_name' => 'ArticleController',\n-        ]);\n-    }\n-\n-    #[Route('/article/edit/{id}', name: 'article_edit')]\n-    public function editArticle(Article $article, Request $request): Response\n-    {\n-        $form = $this->createForm(ArticleFormType::class, $article);\n-\n-        $form->handleRequest($request);\n-        $image = $form->get('image')->getData();\n-\n-        if ($form->isSubmitted() && $form->isValid())\n-        {\n-            if($image)\n-            {\n-\n-            }\n-            else\n-            {\n-                $article->setTitle($form->get('title')->getData());\n-                $article->setText($form->get('text')->getData());\n-\n-                $this->em->flush();\n-\n-                return $this->redirectToRoute('home');\n-            }\n-        }\n-\n-        \n-        return $this->render('pages/edit.html.twig', [\n-            'form' => $form->createView(),\n-            'article' => $article,\n-        ]);\n-    }\n-}\n"
+                },
+                {
+                    "date": 1680545100529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,8 +48,10 @@\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n+                $article->flush();\n+\n                 // $this->em->flush();\n \n                 return $this->redirectToRoute('home');\n             }\n"
+                },
+                {
+                    "date": 1680545805191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n {\n-    private $em;\n+    private $em = new EntityManagerInterface();\n     private $articleRepository;\n \n     public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n     {\n@@ -48,11 +48,10 @@\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n-                $article->flush();\n-\n                 // $this->em->flush();\n+                $entityManager = \n \n                 return $this->redirectToRoute('home');\n             }\n         }\n"
+                },
+                {
+                    "date": 1680545816042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,15 +13,16 @@\n \n class ArticleController extends AbstractController\n {\n     private $em = new EntityManagerInterface();\n-    private $articleRepository;\n+    // private $em;\n+    // private $articleRepository;\n \n-    public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n-    {\n-        $this->em = $em;\n-        $this->articleRepository = $articleRepository;\n-    }\n+    // public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n+    // {\n+    //     $this->em = $em;\n+    //     $this->articleRepository = $articleRepository;\n+    // }\n \n     #[Route('/article', name: 'app_article')]\n     public function index(): Response\n     {\n"
+                },
+                {
+                    "date": 1680545980254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,8 @@\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n {\n-    private $em = new EntityManagerInterface();\n     // private $em;\n     // private $articleRepository;\n \n     // public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n@@ -50,9 +49,9 @@\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 // $this->em->flush();\n-                $entityManager = \n+                $entityManager = $this->getDoctrine()->getManager();\n \n                 return $this->redirectToRoute('home');\n             }\n         }\n"
+                },
+                {
+                    "date": 1680545996391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n {\n+    private $entityManager = new EntityManagerInterface();\n     // private $em;\n     // private $articleRepository;\n \n     // public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n@@ -49,9 +50,9 @@\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 // $this->em->flush();\n-                $entityManager = $this->getDoctrine()->getManager();\n+                $entityManager = $this->getDoctrine()->\n \n                 return $this->redirectToRoute('home');\n             }\n         }\n"
+                },
+                {
+                    "date": 1680546063851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,10 +49,12 @@\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n+                $entityManager->persist($article);\n+                $entityManager->flush();\n+\n                 // $this->em->flush();\n-                $entityManager = $this->getDoctrine()->\n \n                 return $this->redirectToRoute('home');\n             }\n         }\n"
+                },
+                {
+                    "date": 1680546079282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n {\n-    private $entityManager = new EntityManagerInterface();\n+    private $entityManager = EntityManagerInterface();\n     // private $em;\n     // private $articleRepository;\n \n     // public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n"
+                },
+                {
+                    "date": 1680546109537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,17 +12,16 @@\n use Symfony\\Component\\Routing\\Annotation\\Route;\n \n class ArticleController extends AbstractController\n {\n-    private $entityManager = EntityManagerInterface();\n-    // private $em;\n-    // private $articleRepository;\n+    private $entityManager;\n+    private $articleRepository;\n \n-    // public function __construct(EntityManagerInterface $em, ArticleRepository $articleRepository) \n-    // {\n-    //     $this->em = $em;\n-    //     $this->articleRepository = $articleRepository;\n-    // }\n+    public function __construct(EntityManagerInterface $entityManager, ArticleRepository $articleRepository) \n+    {\n+        $this->entityManager = $entityManager;\n+        $this->articleRepository = $articleRepository;\n+    }\n \n     #[Route('/article', name: 'app_article')]\n     public function index(): Response\n     {\n"
+                },
+                {
+                    "date": 1680546122182,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,10 +48,10 @@\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n-                $entityManager->persist($article);\n-                $entityManager->flush();\n+                $this->entityManager->persist($article);\n+                $this->entityManager->flush();\n \n                 // $this->em->flush();\n \n                 return $this->redirectToRoute('home');\n"
+                },
+                {
+                    "date": 1680558728978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,10 +51,8 @@\n \n                 $this->entityManager->persist($article);\n                 $this->entityManager->flush();\n \n-                // $this->em->flush();\n-\n                 return $this->redirectToRoute('home');\n             }\n         }\n \n"
+                },
+                {
+                    "date": 1680558942146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,12 @@\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n             {\n-\n+                if()\n+                {\n+                    \n+                }\n             }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680558966662,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,11 +41,11 @@\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n             {\n-                if()\n+                if($article->getImage() != null)\n                 {\n-                    \n+\n                 }\n             }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680559237555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,14 +40,12 @@\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n-            {\n                 if($article->getImage() != null)\n                 {\n-\n+                    if(file_exists($this->getParameter('kernel.project.dir')))\n                 }\n-            }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n"
+                },
+                {
+                    "date": 1680559258845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,9 @@\n         {\n             if($image)\n                 if($article->getImage() != null)\n                 {\n-                    if(file_exists($this->getParameter('kernel.project.dir')))\n+                    if(file_exists($this->getParameter('kernel.project.dir').$article->getImage()))\n                 }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680559721506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,12 @@\n         {\n             if($image)\n                 if($article->getImage() != null)\n                 {\n-                    if(file_exists($this->getParameter('kernel.project.dir').$article->getImage()))\n+                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage() ))\n+                    {\n+                        \n+                    }\n                 }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680559770392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,14 +39,15 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n+            dd($article->getImage());\n             if($image)\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage() ))\n                     {\n-                        \n+\n                     }\n                 }\n             else\n             {\n"
+                },
+                {
+                    "date": 1680559832317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,8 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($article->getImage());\n             if($image)\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage() ))\n"
+                },
+                {
+                    "date": 1680560040382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,11 +42,11 @@\n         {\n             if($image)\n                 if($article->getImage() != null)\n                 {\n-                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage() ))\n+                    if(file_exists($this->getParameter('kernel.project.dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n-\n+                        \n                     }\n                 }\n             else\n             {\n"
+                }
+            ],
+            "date": 1680525383451,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\nclass ArticleController extends AbstractController\n{\n    #[Route('/article', name: 'app_article')]\n    public function index(): Response\n    {\n        return $this->render('article/index.html.twig', [\n            'controller_name' => 'ArticleController',\n        ]);\n    }\n\n    #[Route('/article/edit/{id}', name: 'article_edit')]\n    public function editArticle(Article $article): Response\n    {\n        return $this->render('pages/edit.html.twig', [\n            'article' => $article,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

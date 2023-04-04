@@ -1,0 +1,54 @@
+{
+    "sourceFile": "code/src/Controller/IndexController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1680523928184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680524018144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,11 +17,11 @@\n         ]);\n     }\n \n     #[Route('/edit', name: 'article_edit')]\n-    public function list(ArticleRepository $articleRepository): Response\n+    public function editArticle(ArticleRepository $articleRepository): Response\n     {\n-        return $this->render('pages/index.html.twig', [\n+        return $this->render('pages/edit.html.twig', [\n             'articles' => $articleRepository->findAll(),\n         ]);\n     }\n }\n"
+                },
+                {
+                    "date": 1680524028050,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n             'articles' => $articleRepository->findAll(),\n         ]);\n     }\n \n-    #[Route('/edit', name: 'article_edit')]\n+    #[Route('/edit', name: 'edit_article')]\n     public function editArticle(ArticleRepository $articleRepository): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n             'articles' => $articleRepository->findAll(),\n"
+                },
+                {
+                    "date": 1680524040453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n             'articles' => $articleRepository->findAll(),\n         ]);\n     }\n \n-    #[Route('/edit', name: 'edit_article')]\n+    #[Route('/article/edit', name: 'edit_article')]\n     public function editArticle(ArticleRepository $articleRepository): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n             'articles' => $articleRepository->findAll(),\n"
+                },
+                {
+                    "date": 1680524051896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n             'articles' => $articleRepository->findAll(),\n         ]);\n     }\n \n-    #[Route('/article/edit', name: 'edit_article')]\n+    #[Route('/article/edit/{id}', name: 'edit_article')]\n     public function editArticle(ArticleRepository $articleRepository): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n             'articles' => $articleRepository->findAll(),\n"
+                },
+                {
+                    "date": 1680524076382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n <?php\n \n namespace App\\Controller;\n \n+use App\\Entity\\Article;\n use App\\Repository\\ArticleRepository;\n use Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\n use Symfony\\Component\\HttpFoundation\\Response;\n use Symfony\\Component\\Routing\\Annotation\\Route;\n@@ -17,11 +18,11 @@\n         ]);\n     }\n \n     #[Route('/article/edit/{id}', name: 'edit_article')]\n-    public function editArticle(ArticleRepository $articleRepository): Response\n+    public function editArticle(Article $articleRepository): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n-            'articles' => $articleRepository->findAll(),\n+            'article' => $articleRepository->findAll(),\n         ]);\n     }\n }\n"
+                },
+                {
+                    "date": 1680524086131,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n         ]);\n     }\n \n     #[Route('/article/edit/{id}', name: 'edit_article')]\n-    public function editArticle(Article $articleRepository): Response\n+    public function editArticle(Article $article): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n             'article' => $articleRepository->findAll(),\n         ]);\n"
+                },
+                {
+                    "date": 1680524095659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,8 @@\n     #[Route('/article/edit/{id}', name: 'edit_article')]\n     public function editArticle(Article $article): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n-            'article' => $articleRepository->findAll(),\n+            'article' => $article,\n         ]);\n     }\n }\n"
+                },
+                {
+                    "date": 1680524107416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n             'articles' => $articleRepository->findAll(),\n         ]);\n     }\n \n-    #[Route('/article/edit/{id}', name: 'edit_article')]\n+    #[Route('/article/edit/{id}', name: 'article_edit')]\n     public function editArticle(Article $article): Response\n     {\n         return $this->render('pages/edit.html.twig', [\n             'article' => $article,\n"
+                },
+                {
+                    "date": 1680525379419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,13 +16,5 @@\n         return $this->render('pages/index.html.twig', [\n             'articles' => $articleRepository->findAll(),\n         ]);\n     }\n-\n-    #[Route('/article/edit/{id}', name: 'article_edit')]\n-    public function editArticle(Article $article): Response\n-    {\n-        return $this->render('pages/edit.html.twig', [\n-            'article' => $article,\n-        ]);\n-    }\n }\n"
+                }
+            ],
+            "date": 1680523928184,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Controller;\n\nuse App\\Repository\\ArticleRepository;\nuse Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController;\nuse Symfony\\Component\\HttpFoundation\\Response;\nuse Symfony\\Component\\Routing\\Annotation\\Route;\n\nclass IndexController extends AbstractController\n{\n    #[Route('/', name: 'home')]\n    public function list(ArticleRepository $articleRepository): Response\n    {\n        return $this->render('pages/index.html.twig', [\n            'articles' => $articleRepository->findAll(),\n        ]);\n    }\n\n    #[Route('/edit', name: 'article_edit')]\n    public function list(ArticleRepository $articleRepository): Response\n    {\n        return $this->render('pages/index.html.twig', [\n            'articles' => $articleRepository->findAll(),\n        ]);\n    }\n}\n"
+        }
+    ]
+}

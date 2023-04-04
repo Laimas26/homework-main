@@ -1,0 +1,8 @@
+{
+    "require": {
+        "symfony/form": "^6.2"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.48"
+    }
+}
