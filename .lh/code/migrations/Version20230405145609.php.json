@@ -1,0 +1,18 @@
+{
+    "sourceFile": "code/migrations/Version20230405145609.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1680706593486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1680706593486,
+            "name": "Commit-0",
+            "content": "<?php\n\ndeclare(strict_types=1);\n\nnamespace DoctrineMigrations;\n\nuse Doctrine\\DBAL\\Schema\\Schema;\nuse Doctrine\\Migrations\\AbstractMigration;\n\n/**\n * Auto-generated Migration: Please modify to your needs!\n */\nfinal class Version20230405145609 extends AbstractMigration\n{\n    public function getDescription(): string\n    {\n        return '';\n    }\n\n    public function up(Schema $schema): void\n    {\n        // this up() migration is auto-generated, please modify it to your needs\n        $this->addSql(\"CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME NULL)\");\n    }\n\n    public function down(Schema $schema): void\n    {\n        // this down() migration is auto-generated, please modify it to your needs\n        $this->addSql('DROP TABLE article');\n    }\n}\n"
+        }
+    ]
+}

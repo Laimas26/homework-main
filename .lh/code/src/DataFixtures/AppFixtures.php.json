@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1680522071308,
@@ -32,6 +32,34 @@
                 {
                     "date": 1680530451526,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,8 @@\n         yield [\n             'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n-            'updated_at' => \n             ];\n \n         yield [\n             'name' => 'Teleportation Breakthrough',\n"
+                },
+                {
+                    "date": 1680705508392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,36 +31,42 @@\n         yield [\n             'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n+            'updated_at' => new \\DateTime(),\n             ];\n \n         yield [\n             'name' => 'Teleportation Breakthrough',\n             'img' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_2.txt'),\n+            'updated_at' => new \\DateTime(),\n         ];\n \n         yield [\n             'name' => 'Urban Farming Skyrockets',\n             'img' => 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_3.txt'),\n+            'updated_at' => new \\DateTime(),\n         ];\n \n         yield [\n             'name' => \"World's First Holographic Smartphone\",\n             'img' => 'https://images.unsplash.com/photo-1570101945621-945409a6370f',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_4.txt'),\n+            'updated_at' => new \\DateTime(),\n         ];\n \n         yield [\n             'name' => 'Self-Driving Cars Reduce Traffic Fatalities',\n             'img' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n+            'updated_at' => new \\DateTime(),\n         ];\n         yield [\n             'name' => 'Ocean Cleanup Project Succeeds',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n+            'updated_at' => new \\DateTime(),\n         ];\n     }\n }\n"
+                },
+                {
+                    "date": 1680705554838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,8 +65,8 @@\n         yield [\n             'name' => 'Ocean Cleanup Project Succeeds',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n-            'updated_at' => new \\DateTime(),\n+            'updated_at' => '2023-04-05',\n         ];\n     }\n }\n"
+                },
+                {
+                    "date": 1680705631167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,8 +65,8 @@\n         yield [\n             'name' => 'Ocean Cleanup Project Succeeds',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n-            'updated_at' => '2023-04-05',\n+            'updated_at' => 5,\n         ];\n     }\n }\n"
+                },
+                {
+                    "date": 1680705652777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n             'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n             'updated_at' => new \\DateTime(),\n         ];\n         yield [\n-            'name' => 'Ocean Cleanup Project Succeeds',\n+            'name' => 'Ocean Cleanup Project Succeedi',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n             'updated_at' => 5,\n         ];\n"
+                },
+                {
+                    "date": 1680705674882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n             'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n             'updated_at' => new \\DateTime(),\n         ];\n         yield [\n-            'name' => 'Ocean Cleanup Project Succeedi',\n+            'name' => 'Ocean Cleanup Project Succeeds',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n             'updated_at' => 5,\n         ];\n"
+                },
+                {
+                    "date": 1680705856499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,42 +31,36 @@\n         yield [\n             'name' => 'AI Transforms Recycling Industry',\n             'img' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_1.txt'),\n-            'updated_at' => new \\DateTime(),\n             ];\n \n         yield [\n             'name' => 'Teleportation Breakthrough',\n             'img' => 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_2.txt'),\n-            'updated_at' => new \\DateTime(),\n         ];\n \n         yield [\n             'name' => 'Urban Farming Skyrockets',\n             'img' => 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_3.txt'),\n-            'updated_at' => new \\DateTime(),\n         ];\n \n         yield [\n             'name' => \"World's First Holographic Smartphone\",\n             'img' => 'https://images.unsplash.com/photo-1570101945621-945409a6370f',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_4.txt'),\n-            'updated_at' => new \\DateTime(),\n         ];\n \n         yield [\n             'name' => 'Self-Driving Cars Reduce Traffic Fatalities',\n             'img' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_5.txt'),\n-            'updated_at' => new \\DateTime(),\n         ];\n         yield [\n             'name' => 'Ocean Cleanup Project Succeeds',\n             'img' => 'https://images.unsplash.com/photo-1484291470158-b8f8d608850d',\n             'text' => file_get_contents(__DIR__ . '/Articles/article_6.txt'),\n-            'updated_at' => 5,\n         ];\n     }\n }\n"
+                },
+                {
+                    "date": 1680707127855,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\DataFixtures;\n \n use App\\Entity\\Article;\n+use DateTime;\n use Doctrine\\Bundle\\FixturesBundle\\Fixture;\n use Doctrine\\Persistence\\ObjectManager;\n \n class AppFixtures extends Fixture\n@@ -15,8 +16,9 @@\n \n             $article->setTitle($articleData['name']);\n             $article->setImage($articleData['img']);\n             $article->setText($articleData['text']);\n+            $article->setUpdatedAt(new DateTime());\n \n             $manager->persist($article);\n         }\n \n"
                 }
             ],
             "date": 1680522071308,

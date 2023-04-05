@@ -1,0 +1,38 @@
+{
+    "sourceFile": "code/migrations/Version20230405140244.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1680703386300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680703403461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,7 +25,7 @@\n \n     public function down(Schema $schema): void\n     {\n         // this down() migration is auto-generated, please modify it to your needs\n-\n+        $this->addSql('DROP TABLE article');\n     }\n }\n"
+                },
+                {
+                    "date": 1680703408741,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n     }\n \n     public function up(Schema $schema): void\n     {\n+        // this up() migration is auto-generated, please modify it to your needs\n         $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME NULL)');\n \n     }\n \n"
+                },
+                {
+                    "date": 1680705818313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \n     public function up(Schema $schema): void\n     {\n         // this up() migration is auto-generated, please modify it to your needs\n-        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME NULL)');\n+        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME DEFAULT DEFAULT GETDATE())');\n \n     }\n \n     public function down(Schema $schema): void\n"
+                },
+                {
+                    "date": 1680705887404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \n     public function up(Schema $schema): void\n     {\n         // this up() migration is auto-generated, please modify it to your needs\n-        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME DEFAULT DEFAULT GETDATE())');\n+        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME DEFAULT GETDATE())');\n \n     }\n \n     public function down(Schema $schema): void\n"
+                },
+                {
+                    "date": 1680705984823,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \n     public function up(Schema $schema): void\n     {\n         // this up() migration is auto-generated, please modify it to your needs\n-        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME DEFAULT GETDATE())');\n+        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP)');\n \n     }\n \n     public function down(Schema $schema): void\n"
+                }
+            ],
+            "date": 1680703386300,
+            "name": "Commit-0",
+            "content": "<?php\n\ndeclare(strict_types=1);\n\nnamespace DoctrineMigrations;\n\nuse Doctrine\\DBAL\\Schema\\Schema;\nuse Doctrine\\Migrations\\AbstractMigration;\n\n/**\n * Auto-generated Migration: Please modify to your needs!\n */\nfinal class Version20230405140244 extends AbstractMigration\n{\n    public function getDescription(): string\n    {\n        return '';\n    }\n\n    public function up(Schema $schema): void\n    {\n        $this->addSql('CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, text CLOB NOT NULL, image VARCHAR(255) NOT NULL, updated_at DATETIME NULL)');\n\n    }\n\n    public function down(Schema $schema): void\n    {\n        // this down() migration is auto-generated, please modify it to your needs\n\n    }\n}\n"
+        }
+    ]
+}

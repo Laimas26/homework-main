@@ -1,0 +1,38 @@
+{
+    "sourceFile": "code/src/Entity/Article.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1680702280639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680702293373,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n \n     #[ORM\\Column(type: Types::TEXT)]\n     private ?string $text = null;\n \n-    #[ORM\\Column(type: 'datetime')]\n+    #[ORM\\Column(type: 'datetime', nullable:true)]\n     private ?string $image = null;\n \n     #[ORM\\Column(length: 255)]\n     private ?string $updatedAt = null;\n"
+                },
+                {
+                    "date": 1680702327094,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,8 @@\n \n namespace App\\Entity;\n \n use App\\Repository\\ArticleRepository;\n-use DateTime;\n use Doctrine\\DBAL\\Types\\Types;\n use Doctrine\\ORM\\Mapping as ORM;\n \n #[ORM\\Entity(repositoryClass: ArticleRepository::class)]\n@@ -20,12 +19,12 @@\n \n     #[ORM\\Column(type: Types::TEXT)]\n     private ?string $text = null;\n \n-    #[ORM\\Column(type: 'datetime', nullable:true)]\n+    #[ORM\\Column(length: 255)]\n     private ?string $image = null;\n \n-    #[ORM\\Column(length: 255)]\n+    #[ORM\\Column(type: 'datetime', nullable:true)]\n     private ?string $updatedAt = null;\n \n     /**\n      * @return int|null\n"
+                },
+                {
+                    "date": 1680702334185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n     #[ORM\\Column(length: 255)]\n     private ?string $image = null;\n \n     #[ORM\\Column(type: 'datetime', nullable:true)]\n-    private ?string $updatedAt = null;\n+    private $updatedAt;\n \n     /**\n      * @return int|null\n      */\n"
+                },
+                {
+                    "date": 1680702343463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -80,5 +80,17 @@\n     public function setImage(?string $image): void\n     {\n         $this->image = $image;\n     }\n+\n+    public function getUpdatedAt(): ?\\DateTimeInterface\n+    {\n+        return $this->updatedAt;\n+    }\n+\n+    public function setUpdatedAt(\\DateTimeInterface $updatedAt): self\n+    {\n+        $this->updatedAt = $updatedAt;\n+\n+        return $this;\n+    }\n }\n"
+                },
+                {
+                    "date": 1680706845167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,5 +92,13 @@\n         $this->updatedAt = $updatedAt;\n \n         return $this;\n     }\n+\n+    /**\n+     * @ORM\\PrePersist\n+     */\n+    public function setUpdatedAtValueOnCreate(): void\n+    {\n+        $this->updatedAt = new \\DateTime();\n+    }\n }\n"
+                }
+            ],
+            "date": 1680702280639,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Entity;\n\nuse App\\Repository\\ArticleRepository;\nuse DateTime;\nuse Doctrine\\DBAL\\Types\\Types;\nuse Doctrine\\ORM\\Mapping as ORM;\n\n#[ORM\\Entity(repositoryClass: ArticleRepository::class)]\nclass Article\n{\n    #[ORM\\Id]\n    #[ORM\\GeneratedValue]\n    #[ORM\\Column]\n    private ?int $id = null;\n\n    #[ORM\\Column(length: 255)]\n    private ?string $title = null;\n\n    #[ORM\\Column(type: Types::TEXT)]\n    private ?string $text = null;\n\n    #[ORM\\Column(type: 'datetime')]\n    private ?string $image = null;\n\n    #[ORM\\Column(length: 255)]\n    private ?string $updatedAt = null;\n\n    /**\n     * @return int|null\n     */\n    public function getId(): ?int\n    {\n        return $this->id;\n    }\n\n    /**\n     * @return string|null\n     */\n    public function getTitle(): ?string\n    {\n        return $this->title;\n    }\n\n    /**\n     * @param string|null $title\n     */\n    public function setTitle(?string $title): void\n    {\n        $this->title = $title;\n    }\n\n    /**\n     * @return string|null\n     */\n    public function getText(): ?string\n    {\n        return $this->text;\n    }\n\n    /**\n     * @param string|null $text\n     */\n    public function setText(?string $text): void\n    {\n        $this->text = $text;\n    }\n\n    /**\n     * @return string|null\n     */\n    public function getImage(): ?string\n    {\n        return $this->image;\n    }\n\n    /**\n     * @param string|null $image\n     */\n    public function setImage(?string $image): void\n    {\n        $this->image = $image;\n    }\n}\n"
+        }
+    ]
+}

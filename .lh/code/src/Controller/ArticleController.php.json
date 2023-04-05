@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 62,
+            "activePatchIndex": 84,
             "patches": [
                 {
                     "date": 1680525383451,
@@ -256,6 +256,94 @@
                 {
                     "date": 1680623471771,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,11 +50,11 @@\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n                         try {\n-                            dd($image->move(\n+                            $image->move(\n                                 $this->getParameter('kernel.project_dir') . '/public/uploads',\n-                                $newFileName));\n+                                $newFileName);\n                             \n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n"
+                },
+                {
+                    "date": 1680704141719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,8 +59,9 @@\n                             return new Response($e->getMessage());\n                         }\n \n                         $article->setImage('/uploads/' . $newFileName);\n+                        $article->setUpdatedAt(new \\DateTime());\n                         $this->entityManager->flush();\n \n                         return $this->redirectToRoute('home');\n                     }\n"
+                },
+                {
+                    "date": 1680704200366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,9 @@\n         {\n             if($image)\n                 if($article->getImage() != null)\n                 {\n+                    dd('ss');\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n"
+                },
+                {
+                    "date": 1680704229536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,12 +40,12 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n+            dd('ss');\n             if($image)\n                 if($article->getImage() != null)\n                 {\n-                    dd('ss');\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n"
+                },
+                {
+                    "date": 1680704250105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,12 +40,13 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd('ss');\n+            \n             if($image)\n                 if($article->getImage() != null)\n                 {\n+                    dd('gg');\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n"
+                },
+                {
+                    "date": 1680704305086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,13 +40,10 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            \n             if($image)\n                 if($article->getImage() != null)\n-                {\n-                    dd('gg');\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n@@ -66,9 +63,8 @@\n                         $this->entityManager->flush();\n \n                         return $this->redirectToRoute('home');\n                     }\n-                }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n"
+                },
+                {
+                    "date": 1680704323724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,8 +65,9 @@\n                         return $this->redirectToRoute('home');\n                     }\n             else\n             {\n+                dd('ss');\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 $this->entityManager->persist($article);\n"
+                },
+                {
+                    "date": 1680704406147,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n+        dd('gg');\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n@@ -65,9 +66,9 @@\n                         return $this->redirectToRoute('home');\n                     }\n             else\n             {\n-                dd('ss');\n+                \n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 $this->entityManager->persist($article);\n"
+                },
+                {
+                    "date": 1680704424738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,11 +38,11 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n-        dd('gg');\n         if ($form->isSubmitted() && $form->isValid())\n         {\n+            dd('gg');\n             if($image)\n                 if($article->getImage() != null)\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n"
+                },
+                {
+                    "date": 1680704486586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,8 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd('gg');\n             if($image)\n                 if($article->getImage() != null)\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n"
+                },
+                {
+                    "date": 1680704524837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n                         return $this->redirectToRoute('home');\n                     }\n             else\n             {\n-                \n+                dd('gg');\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 $this->entityManager->persist($article);\n"
+                },
+                {
+                    "date": 1680704566051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,9 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n+            dd('gg');\n             if($image)\n                 if($article->getImage() != null)\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n"
+                },
+                {
+                    "date": 1680704590426,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,13 +40,13 @@\n         $image = $form->get('image')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd('gg');\n             if($image)\n                 if($article->getImage() != null)\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n+                        dd('dd');\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n"
+                },
+                {
+                    "date": 1680704662097,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n+        dd($form->isValid());\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n"
+                },
+                {
+                    "date": 1680704678798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n-        dd($form->isValid());\n+        dd($form->isSubmitted());\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n"
+                },
+                {
+                    "date": 1680705190799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,8 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n-        dd($form->isSubmitted());\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n"
+                },
+                {
+                    "date": 1680705201258,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,8 +76,9 @@\n \n                 return $this->redirectToRoute('home');\n             }\n         }\n+        dd('tt');\n \n         \n         return $this->render('pages/edit.html.twig', [\n             'form' => $form->createView(),\n"
+                },
+                {
+                    "date": 1680705233126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n+        dd($image);\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n"
+                },
+                {
+                    "date": 1680705256633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,10 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n-        dd($image);\n+        if($image)\n+            dd($image);\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n"
+                },
+                {
+                    "date": 1680705263842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n         if($image)\n-            dd($image);\n+            dd('haha');\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n                 if($article->getImage() != null)\n"
+                },
+                {
+                    "date": 1680705295992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,11 @@\n             dd('haha');\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n+            {\n                 if($article->getImage() != null)\n+                {\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n                         dd('dd');\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n@@ -66,8 +68,10 @@\n                         $this->entityManager->flush();\n \n                         return $this->redirectToRoute('home');\n                     }\n+                }\n+            }\n             else\n             {\n                 dd('gg');\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680705322664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,19 +38,16 @@\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n \n-        if($image)\n-            dd('haha');\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)\n                     {\n-                        dd('dd');\n                         $this->getParameter('kernel.project_dir') . $article->getImage();\n \n                         $newFileName = uniqid() . '.' . $image->guessExtension();\n \n@@ -72,9 +69,8 @@\n                 }\n             }\n             else\n             {\n-                dd('gg');\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n \n                 $this->entityManager->persist($article);\n@@ -82,9 +78,8 @@\n \n                 return $this->redirectToRoute('home');\n             }\n         }\n-        dd('tt');\n \n         \n         return $this->render('pages/edit.html.twig', [\n             'form' => $form->createView(),\n"
+                },
+                {
+                    "date": 1680705391159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,8 +71,9 @@\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n+                $article->setUpdatedAt(new \\DateTime());\n \n                 $this->entityManager->persist($article);\n                 $this->entityManager->flush();\n \n"
                 }
             ],
             "date": 1680525383451,

@@ -42,6 +42,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             if($image)
+            {
                 if($article->getImage() != null)
                 {
                     if(file_exists($this->getParameter('kernel.project_dir') . $article->getImage()) || $article->getImage() != null)
@@ -60,15 +61,18 @@ class ArticleController extends AbstractController
                         }
 
                         $article->setImage('/uploads/' . $newFileName);
+                        $article->setUpdatedAt(new \DateTime());
                         $this->entityManager->flush();
 
                         return $this->redirectToRoute('home');
                     }
                 }
+            }
             else
             {
                 $article->setTitle($form->get('title')->getData());
                 $article->setText($form->get('text')->getData());
+                $article->setUpdatedAt(new \DateTime());
 
                 $this->entityManager->persist($article);
                 $this->entityManager->flush();
