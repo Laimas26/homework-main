@@ -1,0 +1,18 @@
+{
+    "sourceFile": "code/templates/_partials/reading-mins.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1680701956972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1680701956972,
+            "name": "Commit-0",
+            "content": "{% set count = 0 %}\r\n{% set allWords = article.text|split(' ') %}\r\n{% for word in allWords %}\r\n    {% if word|length > 3 %}\r\n        {% set count = count + 1 %}\r\n    {% endif %}\r\n{% endfor %}\r\n{% set minutesFloat = count/200 %}\r\n{% set minutesInt = minutesFloat|round(0, 'floor') %}\r\n{% set seconds = ((minutesFloat-minutesInt)*60)|round %}\r\n{{ minutesInt }}:{{ '%02d'|format(seconds) }} mins"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 88,
+            "activePatchIndex": 108,
             "patches": [
                 {
                     "date": 1680614507825,
@@ -360,6 +360,86 @@
                 {
                     "date": 1680618099241,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n                             {% set numberOfWords = article.title|split(' ') %}\n                             {% set numberOfWords2 = 0 %}\n                             {% for word in numberOfWords %}\n                                 {% if word|length > 3 %}\n-                                {{ numberOfWords2 += 1 }}\n+                                {{ numberOfWords2++ }}\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680621760355,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,12 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set numberOfWords = article.title|split(' ') %}\n-                            {% set numberOfWords2 = 0 %}\n-                            {% for word in numberOfWords %}\n+                            {% set allWords = article.title|split(' ') %}\n+                            {% for word in allWords %}\n                                 {% if word|length > 3 %}\n-                                {{ numberOfWords2++ }}\n+                                {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680621767659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n                     <p class=\"text-muted\">\n                             {% set allWords = article.title|split(' ') %}\n                             {% for word in allWords %}\n                                 {% if word|length > 3 %}\n-                                {% set count = count + 1 %}\n+                                    {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680621808400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n+                            {{ count }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680621840110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n+                            {% set count = 0 %}\n                             {% set allWords = article.title|split(' ') %}\n                             {% for word in allWords %}\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n"
+                },
+                {
+                    "date": 1680621853159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n                     <p class=\"text-muted\">\n                             {% set count = 0 %}\n                             {% set allWords = article.title|split(' ') %}\n                             {% for word in allWords %}\n-                                {% if word|length > 3 %}\n+                                {% if word|length > 8 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             {{ count }}\n"
+                },
+                {
+                    "date": 1680621861559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n                     <p class=\"text-muted\">\n                             {% set count = 0 %}\n                             {% set allWords = article.title|split(' ') %}\n                             {% for word in allWords %}\n-                                {% if word|length > 8 %}\n+                                {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             {{ count }}\n"
+                },
+                {
+                    "date": 1680621921585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ count }}\n+                            {{ round(count/200) }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680621929653,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ round(count/200) }}\n+                            {{ count/200 }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680621952534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ count/200 }}\n+                            {{ count/200|round }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680621980899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n                             {% set count = 0 %}\n-                            {% set allWords = article.title|split(' ') %}\n+                            {% set allWords = article.text|split(' ') %}\n                             {% for word in allWords %}\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n"
+                },
+                {
+                    "date": 1680622058432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ count/200|round }}\n+                            {{ count }}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680622555031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,10 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n-                            {{ count }}\n+                            {% set minuteFloat = count/200 %}\n+                            {% set minutesInt = floor(minutesFloat) %}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680622651560,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n                                 {% endif %}\n                             {% endfor %}\n                             {% set minuteFloat = count/200 %}\n                             {% set minutesInt = floor(minutesFloat) %}\n+                            {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680622767833,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n                             {% endfor %}\n                             {% set minuteFloat = count/200 %}\n                             {% set minutesInt = floor(minutesFloat) %}\n                             {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n+                            {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
+                },
+                {
+                    "date": 1680622782488,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             {% set minuteFloat = count/200 %}\n-                            {% set minutesInt = floor(minutesFloat) %}\n+                            {% set minutesInt = minutesFloat|floor %}\n                             {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n                             {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680622811337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             {% set minuteFloat = count/200 %}\n-                            {% set minutesInt = minutesFloat|floor %}\n+                            {% set minutesInt = minutesFloat|round(1, floor) %}\n                             {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n                             {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680622818923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             {% set minuteFloat = count/200 %}\n-                            {% set minutesInt = minutesFloat|round(1, floor) %}\n+                            {% set minutesInt = minutesFloat|round(1, 'floor') %}\n                             {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n                             {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680622826362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n                             {% set minuteFloat = count/200 %}\n-                            {% set minutesInt = minutesFloat|round(1, 'floor') %}\n+                            {% set minutesInt = minutesFloat|round(0, 'floor') %}\n                             {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n                             {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n                     </p>\n                 </div>\n"
+                },
+                {
+                    "date": 1680622839025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n                                 {% if word|length > 3 %}\n                                     {% set count = count + 1 %}\n                                 {% endif %}\n                             {% endfor %}\n-                            {% set minuteFloat = count/200 %}\n+                            {% set minutesFloat = count/200 %}\n                             {% set minutesInt = minutesFloat|round(0, 'floor') %}\n                             {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n                             {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n                     </p>\n"
+                },
+                {
+                    "date": 1680701954136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,19 +6,11 @@\n             <div class=\"container\">\n                 <div class=\"py-5 text-center\">\n                     <h1 class=\"fw-bold\">{{ article.title }}</h1>\n                     <p class=\"text-muted\">\n-                            {% set count = 0 %}\n-                            {% set allWords = article.text|split(' ') %}\n-                            {% for word in allWords %}\n-                                {% if word|length > 3 %}\n-                                    {% set count = count + 1 %}\n-                                {% endif %}\n-                            {% endfor %}\n-                            {% set minutesFloat = count/200 %}\n-                            {% set minutesInt = minutesFloat|round(0, 'floor') %}\n-                            {% set seconds = ((minutesFloat-minutesInt)*60)|round %}\n-                            {{ minutesInt }}:{{ '%02d'|format(seconds) }} mins\n+                            {% include '_partials/reading-mins.html.twig' with {\n+                                article: article\n+                            } %}\n                     </p>\n                 </div>\n \n                 <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\n"
                 }
             ],
             "date": 1680614507825,

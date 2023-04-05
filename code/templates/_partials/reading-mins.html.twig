@@ -1,0 +1,11 @@
+{% set count = 0 %}
+{% set allWords = article.text|split(' ') %}
+{% for word in allWords %}
+    {% if word|length > 3 %}
+        {% set count = count + 1 %}
+    {% endif %}
+{% endfor %}
+{% set minutesFloat = count/200 %}
+{% set minutesInt = minutesFloat|round(0, 'floor') %}
+{% set seconds = ((minutesFloat-minutesInt)*60)|round %}
+{{ minutesInt }}:{{ '%02d'|format(seconds) }} mins

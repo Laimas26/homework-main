@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1680524223113,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680702037716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,11 @@\n                 <a href=\"{{ path('article_edit', {id: article.id}) }}\" class=\"btn btn-sm btn-outline-secondary\">Edit</a>\n             </div>\n \n             <small class=\"text-muted\">\n-                X mins\n+                {% include '_partials/reading-mins.html.twig' with {\n+                        article: article\n+                } %}\n             </small>\n         </div>\n     </div>\n </div>\n"
                 }
             ],
             "date": 1680524223113,

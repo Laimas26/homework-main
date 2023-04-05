@@ -16,7 +16,9 @@
             </div>
 
             <small class="text-muted">
-                X mins
+                {% include '_partials/reading-mins.html.twig' with {
+                        article: article
+                } %}
             </small>
         </div>
     </div>

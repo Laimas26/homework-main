@@ -7,13 +7,9 @@
                 <div class="py-5 text-center">
                     <h1 class="fw-bold">{{ article.title }}</h1>
                     <p class="text-muted">
-                            {% set numberOfWords = article.title|split(' ') %}
-                            {% set numberOfWords2 = 0 %}
-                            {% for word in numberOfWords %}
-                                {% if word|length > 3 %}
-                                {{ numberOfWords2++ }}
-                                {% endif %}
-                            {% endfor %}
+                            {% include '_partials/reading-mins.html.twig' with {
+                                article: article
+                            } %}
                     </p>
                 </div>
 

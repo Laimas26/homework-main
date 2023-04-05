@@ -72,8 +72,12 @@ class __TwigTemplate_a302f1c23e9be3d87fca376719528cda extends Template
             </div>
 
             <small class=\"text-muted\">
-                X mins
-            </small>
+                ";
+        // line 19
+        $this->loadTemplate("_partials/reading-mins.html.twig", "_partials/article-card.html.twig", 19)->display(twig_array_merge($context, ["article" =>         // line 20
+(isset($context["article"]) || array_key_exists("article", $context) ? $context["article"] : (function () { throw new RuntimeError('Variable "article" does not exist.', 20, $this->source); })())]));
+        // line 22
+        echo "            </small>
         </div>
     </div>
 </div>
@@ -95,7 +99,7 @@ class __TwigTemplate_a302f1c23e9be3d87fca376719528cda extends Template
 
     public function getDebugInfo()
     {
-        return array (  70 => 15,  66 => 14,  57 => 9,  55 => 8,  49 => 5,  44 => 3,  40 => 1,);
+        return array (  80 => 22,  78 => 20,  77 => 19,  70 => 15,  66 => 14,  57 => 9,  55 => 8,  49 => 5,  44 => 3,  40 => 1,);
     }
 
     public function getSourceContext()
@@ -118,7 +122,9 @@ class __TwigTemplate_a302f1c23e9be3d87fca376719528cda extends Template
             </div>
 
             <small class=\"text-muted\">
-                X mins
+                {% include '_partials/reading-mins.html.twig' with {
+                        article: article
+                } %}
             </small>
         </div>
     </div>
