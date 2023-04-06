@@ -26,6 +26,7 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
 
         $this->blocks = [
             'main' => [$this, 'block_main'],
+            'javascripts' => [$this, 'block_javascripts'],
         ];
     }
 
@@ -72,26 +73,103 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
         // line 16
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), 'form_start');
         echo "
-
                 
                 ";
+        // line 18
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 18, $this->source); })()), "title", [], "any", false, false, false, 18), 'row');
+        echo "
+                ";
         // line 19
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 19, $this->source); })()), 'form_end');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 19, $this->source); })()), "text", [], "any", false, false, false, 19), 'row');
+        echo "
+
+                <div class=\"form-check form-switch\">
+                    ";
+        // line 22
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 22, $this->source); })()), "enableImageFromUrl", [], "any", false, false, false, 22), 'label');
+        echo "
+                    ";
+        // line 23
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 23, $this->source); })()), "enableImageFromUrl", [], "any", false, false, false, 23), 'widget');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 27
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 27, $this->source); })()), "image", [], "any", false, false, false, 27), 'label');
+        echo "
+                    ";
+        // line 28
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 28, $this->source); })()), "image", [], "any", false, false, false, 28), 'widget');
+        echo "
+                </div>
+
+                <div class=\"form-group\">
+                    ";
+        // line 32
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 32, $this->source); })()), "imageFromUrl", [], "any", false, false, false, 32), 'label');
+        echo "
+                    ";
+        // line 33
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 33, $this->source); })()), "imageFromUrl", [], "any", false, false, false, 33), 'widget');
+        echo "
+                </div>
+                ";
+        // line 35
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 35, $this->source); })()), 'form_end');
         echo "
                 
 
                 ";
-        // line 25
+        // line 41
         echo "
                 <div class=\"d-grid gap-2 d-sm-flex justify-content-sm-center\">
                     <a href=\"";
-        // line 27
+        // line 43
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\" type=\"button\" class=\"btn btn-secondary btn-lg px-4 gap-3\">Back</a>
                 </div>
             </div>
         </div>
     </main>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 50
+    public function block_javascripts($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 51
+        echo "    ";
+        $this->displayParentBlock("javascripts", $context, $blocks);
+        echo "
+    <script>
+        var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');
+        var imageField = document.getElementById('article_form_image');
+        var imageFromUrlField = document.getElementById('article_form_imageFromUrl');
+
+        imageCheckBox.onchange = function() {
+            alert('sss');
+        }
+        
+        function toggleFields() {
+            var enabled = imageCheckbox.checked;
+            imageField.disabled = !enabled;
+            imageField.setAttribute('data-enabled', enabled);
+            imageFromUrlField.disabled = enabled;
+            imageFromUrlField.setAttribute('data-enabled', !enabled);
+        }
+        
+        imageCheckbox.addEventListener('change', toggleFields);
+        toggleFields();
+    </script>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -110,7 +188,7 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
 
     public function getDebugInfo()
     {
-        return array (  89 => 27,  85 => 25,  79 => 19,  73 => 16,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  150 => 51,  143 => 50,  130 => 43,  126 => 41,  120 => 35,  115 => 33,  111 => 32,  104 => 28,  100 => 27,  93 => 23,  89 => 22,  83 => 19,  79 => 18,  74 => 16,  60 => 4,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -131,8 +209,24 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
             <div class=\"container\">
 
                 {{ form_start(form) }}
-
                 
+                {{ form_row(form.title) }}
+                {{ form_row(form.text) }}
+
+                <div class=\"form-check form-switch\">
+                    {{ form_label(form.enableImageFromUrl) }}
+                    {{ form_widget(form.enableImageFromUrl) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.image) }}
+                    {{ form_widget(form.image) }}
+                </div>
+
+                <div class=\"form-group\">
+                    {{ form_label(form.imageFromUrl) }}
+                    {{ form_widget(form.imageFromUrl) }}
+                </div>
                 {{ form_end(form) }}
                 
 
@@ -146,6 +240,30 @@ class __TwigTemplate_55284c7ccf541db2503409beda63125e extends Template
             </div>
         </div>
     </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');
+        var imageField = document.getElementById('article_form_image');
+        var imageFromUrlField = document.getElementById('article_form_imageFromUrl');
+
+        imageCheckBox.onchange = function() {
+            alert('sss');
+        }
+        
+        function toggleFields() {
+            var enabled = imageCheckbox.checked;
+            imageField.disabled = !enabled;
+            imageField.setAttribute('data-enabled', enabled);
+            imageFromUrlField.disabled = enabled;
+            imageFromUrlField.setAttribute('data-enabled', !enabled);
+        }
+        
+        imageCheckbox.addEventListener('change', toggleFields);
+        toggleFields();
+    </script>
 {% endblock %}", "pages/edit.html.twig", "/code/templates/pages/edit.html.twig");
     }
 }

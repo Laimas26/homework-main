@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 24,
+            "activePatchIndex": 37,
             "patches": [
                 {
                     "date": 1680523756550,
@@ -104,6 +104,58 @@
                 {
                     "date": 1680610863200,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n \r\n+                \r\n                 {{ form_end(form) }}\r\n                 \r\n \r\n                 {# <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\r\n"
+                },
+                {
+                    "date": 1680786804041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n \r\n-                \r\n+\r\n                 {{ form_end(form) }}\r\n                 \r\n \r\n                 {# <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\r\n"
+                },
+                {
+                    "date": 1680787372901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,26 @@\n         <div class=\"py-5 bg-light\">\r\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n+                \r\n+                {{ form_row(form.title) }}\r\n+                {{ form_row(form.content) }}\r\n \r\n+                <div class=\"form-group\">\r\n+                    {{ form_label(form.image_from_url_enabled) }}\r\n+                    {{ form_widget(form.image_from_url_enabled) }}\r\n+                </div>\r\n \r\n+                <div class=\"form-group\">\r\n+                    {{ form_label(form.image) }}\r\n+                    {{ form_widget(form.image) }}\r\n+                </div>\r\n+\r\n+                <div class=\"form-group\">\r\n+                    {{ form_label(form.imageFromUrl) }}\r\n+                    {{ form_widget(form.imageFromUrl) }}\r\n+                </div>\r\n                 {{ form_end(form) }}\r\n                 \r\n \r\n                 {# <img class=\"img-fluid\" src=\"{{ article.image }}\" alt=\"\">\r\n"
+                },
+                {
+                    "date": 1680787409221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,11 +17,11 @@\n                 \r\n                 {{ form_row(form.title) }}\r\n                 {{ form_row(form.content) }}\r\n \r\n-                <div class=\"form-group\">\r\n-                    {{ form_label(form.image_from_url_enabled) }}\r\n-                    {{ form_widget(form.image_from_url_enabled) }}\r\n+                <div class=\"orm-check form-switch\">\r\n+                    {{ form_label(form.enableImageFromUrl) }}\r\n+                    {{ form_widget(form.enableImageFromUrl) }}\r\n                 </div>\r\n \r\n                 <div class=\"form-group\">\r\n                     {{ form_label(form.image) }}\r\n"
+                },
+                {
+                    "date": 1680787445304,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,11 @@\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n                 \r\n-                {{ form_row(form.title) }}\r\n-                {{ form_row(form.content) }}\r\n+                \r\n \r\n-                <div class=\"orm-check form-switch\">\r\n+                <div class=\"form-check form-switch\">\r\n                     {{ form_label(form.enableImageFromUrl) }}\r\n                     {{ form_widget(form.enableImageFromUrl) }}\r\n                 </div>\r\n \r\n"
+                },
+                {
+                    "date": 1680787470825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,10 @@\n             <div class=\"container\">\r\n \r\n                 {{ form_start(form) }}\r\n                 \r\n-                \r\n+                {{ form_row(form.title) }}\r\n+                {{ form_row(form.text) }}\r\n \r\n                 <div class=\"form-check form-switch\">\r\n                     {{ form_label(form.enableImageFromUrl) }}\r\n                     {{ form_widget(form.enableImageFromUrl) }}\r\n"
+                },
+                {
+                    "date": 1680788799645,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,5 +44,25 @@\n                 </div>\r\n             </div>\r\n         </div>\r\n     </main>\r\n+{% endblock %}\r\n+\r\n+{% block javascripts %}\r\n+    {{ parent() }}\r\n+    <script>\r\n+        var imageCheckbox = document.getElementById('article_enableImageFromUrl');\r\n+        var imageField = document.getElementById('article_image');\r\n+        var imageFromUrlField = document.getElementById('article_imageFromUrl');\r\n+        \r\n+        function toggleFields() {\r\n+            var enabled = imageCheckbox.checked;\r\n+            imageField.disabled = !enabled;\r\n+            imageField.setAttribute('data-enabled', enabled);\r\n+            imageFromUrlField.disabled = enabled;\r\n+            imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n+        }\r\n+        \r\n+        imageCheckbox.addEventListener('change', toggleFields);\r\n+        toggleFields();\r\n+    </script>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680788861065,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,9 +49,9 @@\n \r\n {% block javascripts %}\r\n     {{ parent() }}\r\n     <script>\r\n-        var imageCheckbox = document.getElementById('article_enableImageFromUrl');\r\n+        var imageCheckbox = document.getElementById('checkbox_url');\r\n         var imageField = document.getElementById('article_image');\r\n         var imageFromUrlField = document.getElementById('article_imageFromUrl');\r\n         \r\n         function toggleFields() {\r\n"
+                },
+                {
+                    "date": 1680789153513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,11 +49,11 @@\n \r\n {% block javascripts %}\r\n     {{ parent() }}\r\n     <script>\r\n-        var imageCheckbox = document.getElementById('checkbox_url');\r\n-        var imageField = document.getElementById('article_image');\r\n-        var imageFromUrlField = document.getElementById('article_imageFromUrl');\r\n+        var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n+        var imageField = document.getElementById('article_form_image');\r\n+        var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n         \r\n         function toggleFields() {\r\n             var enabled = imageCheckbox.checked;\r\n             imageField.disabled = !enabled;\r\n"
+                },
+                {
+                    "date": 1680789383745,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,8 +54,9 @@\n         var imageField = document.getElementById('article_form_image');\r\n         var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n         \r\n         function toggleFields() {\r\n+            alert('sss');\r\n             var enabled = imageCheckbox.checked;\r\n             imageField.disabled = !enabled;\r\n             imageField.setAttribute('data-enabled', enabled);\r\n             imageFromUrlField.disabled = enabled;\r\n"
+                },
+                {
+                    "date": 1680789415916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,11 +52,14 @@\n     <script>\r\n         var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n         var imageField = document.getElementById('article_form_image');\r\n         var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n+\r\n+        imageCheckBox.onchange = function() {\r\n+            alert('sss');\r\n+        }\r\n         \r\n         function toggleFields() {\r\n-            alert('sss');\r\n             var enabled = imageCheckbox.checked;\r\n             imageField.disabled = !enabled;\r\n             imageField.setAttribute('data-enabled', enabled);\r\n             imageFromUrlField.disabled = enabled;\r\n"
+                },
+                {
+                    "date": 1680789694201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,29 +44,5 @@\n                 </div>\r\n             </div>\r\n         </div>\r\n     </main>\r\n-{% endblock %}\r\n-\r\n-{% block javascripts %}\r\n-    {{ parent() }}\r\n-    <script>\r\n-        var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n-        var imageField = document.getElementById('article_form_image');\r\n-        var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n-\r\n-        imageCheckBox.onchange = function() {\r\n-            alert('sss');\r\n-        }\r\n-        \r\n-        function toggleFields() {\r\n-            var enabled = imageCheckbox.checked;\r\n-            imageField.disabled = !enabled;\r\n-            imageField.setAttribute('data-enabled', enabled);\r\n-            imageFromUrlField.disabled = enabled;\r\n-            imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n-        }\r\n-        \r\n-        imageCheckbox.addEventListener('change', toggleFields);\r\n-        toggleFields();\r\n-    </script>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680789963062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,5 +44,10 @@\n                 </div>\r\n             </div>\r\n         </div>\r\n     </main>\r\n+{% endblock %}\r\n+\r\n+{% block javascripts %}\r\n+    {{ parent() }}\r\n+    <script src=\"{{ asset('js/question_show.js') }}\"></script>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680790009077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,6 +48,6 @@\n {% endblock %}\r\n \r\n {% block javascripts %}\r\n     {{ parent() }}\r\n-    <script src=\"{{ asset('js/question_show.js') }}\"></script>\r\n+    <script src=\"{{ asset('js/image_upload.js') }}\"></script>\r\n {% endblock %}\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1680523756550,

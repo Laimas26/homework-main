@@ -40,7 +40,7 @@ class ReadingTimeTest extends TestCase
         }));
 
         $template = $twig->load('_partials/reading-mins.html.twig');
-        $article = ['text' => 'Text for testing the reading time algorithm, this calculation should return value of 0.06 minutes or to be exact ~6 seconds'];
+        $article = ['text' => 'Text for testing the reading time algorithm, this calculation should return value of 0:04 minutes or to be exact ~4 seconds'];
         $output = $template->render(['article' => $article]);
 
         $this->assertEquals(floatval('0:04 mins'), floatval($output));

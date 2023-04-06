@@ -1,0 +1,74 @@
+{
+    "sourceFile": "code/public/js/image_upload.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 14,
+            "patches": [
+                {
+                    "date": 1680789697656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680789750038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,9 @@\n             imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n         }\r\n         \r\n         imageCheckbox.addEventListener('change', toggleFields);\r\n-        toggleFields();\n\\ No newline at end of file\n+        toggleFields();\r\n+\r\n+        $('#article_form_enableImageFromUrl').on('change', function () {\r\n+            alert('ss');\r\n+        })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791454587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,19 @@\n-        var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n-        var imageField = document.getElementById('article_form_image');\r\n-        var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n+        // var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n+        // var imageField = document.getElementById('article_form_image');\r\n+        // var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n         \r\n-        function toggleFields() {\r\n-            var enabled = imageCheckbox.checked;\r\n-            imageField.disabled = !enabled;\r\n-            imageField.setAttribute('data-enabled', enabled);\r\n-            imageFromUrlField.disabled = enabled;\r\n-            imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n-        }\r\n+        // function toggleFields() {\r\n+        //     var enabled = imageCheckbox.checked;\r\n+        //     imageField.disabled = !enabled;\r\n+        //     imageField.setAttribute('data-enabled', enabled);\r\n+        //     imageFromUrlField.disabled = enabled;\r\n+        //     imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n+        // }\r\n         \r\n-        imageCheckbox.addEventListener('change', toggleFields);\r\n-        toggleFields();\r\n+        // imageCheckbox.addEventListener('change', toggleFields);\r\n+        // toggleFields();\r\n \r\n         $('#article_form_enableImageFromUrl').on('change', function () {\r\n-            alert('ss');\r\n+            \r\n+            $('#article_form_image').attr('disabled', false)\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791462865,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,6 @@\n         // toggleFields();\r\n \r\n         $('#article_form_enableImageFromUrl').on('change', function () {\r\n             \r\n-            $('#article_form_image').attr('disabled', false)\r\n+            $('#article_form_image').attr('disabled', false);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791474053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,6 @@\n         // toggleFields();\r\n \r\n         $('#article_form_enableImageFromUrl').on('change', function () {\r\n             \r\n-            $('#article_form_image').attr('disabled', false);\r\n+            $('#article_form_imageFromUrl').attr('disabled', false);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791513489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,6 @@\n \r\n         $('#article_form_enableImageFromUrl').on('change', function () {\r\n             \r\n             $('#article_form_imageFromUrl').attr('disabled', false);\r\n+            $('#article_form_image').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791637054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,13 @@\n         \r\n         // imageCheckbox.addEventListener('change', toggleFields);\r\n         // toggleFields();\r\n \r\n-        $('#article_form_enableImageFromUrl').on('change', function () {\r\n+        $('#article_form_enableImageFromUrl').on('change', function () \r\n+        {\r\n             \r\n-            $('#article_form_imageFromUrl').attr('disabled', false);\r\n+            // $('#article_form_imageFromUrl').attr('disabled', false);\r\n+            $('#.disabledinput').attr('disabled', false);\r\n+\r\n+            // $('#article_form_image').attr('disabled', true);\r\n             $('#article_form_image').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791650130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         $('#article_form_enableImageFromUrl').on('change', function () \r\n         {\r\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n-            $('#.disabledinput').attr('disabled', false);\r\n+            $('.disabledinput').attr('disabled', false);\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n             $('#article_form_image').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791907950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,12 @@\n         $('#article_form_enableImageFromUrl').on('change', function () \r\n         {\r\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n+\r\n+            $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput')\r\n             $('.disabledinput').attr('disabled', false);\r\n+            $('.disabledinput').ad;\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n-            $('#article_form_image').attr('disabled', true);\r\n+            $('.enabledinput').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680791924370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         {\r\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n \r\n-            $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput')\r\n+            $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput');\r\n             $('.disabledinput').attr('disabled', false);\r\n             $('.disabledinput').ad;\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n"
+                },
+                {
+                    "date": 1680792009631,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,8 @@\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n \r\n             $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput');\r\n             $('.disabledinput').attr('disabled', false);\r\n-            $('.disabledinput').ad;\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n             $('.enabledinput').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680792048330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n \r\n             $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput');\r\n-            $('.disabledinput').attr('disabled', false);\r\n+            // $('.disabledinput').attr('disabled', false);\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n-            $('.enabledinput').attr('disabled', true);\r\n+            // $('.enabledinput').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680792054083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n \r\n             $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput');\r\n-            // $('.disabledinput').attr('disabled', false);\r\n+            $('.disabledinput').attr('disabled', false);\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n-            // $('.enabledinput').attr('disabled', true);\r\n+            $('.enabledinput').attr('disabled', true);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680792067818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n \r\n             $('#article_form_imageFromUrl,#article_form_image').toggleClass('disabledinput enabledinput');\r\n-            $('.disabledinput').attr('disabled', false);\r\n+            $('.disabledinput').attr('disabled', true);\r\n \r\n             // $('#article_form_image').attr('disabled', true);\r\n-            $('.enabledinput').attr('disabled', true);\r\n+            $('.enabledinput').attr('disabled', false);\r\n         })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680797899943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,4 @@\n-        // var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n-        // var imageField = document.getElementById('article_form_image');\r\n-        // var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n-        \r\n-        // function toggleFields() {\r\n-        //     var enabled = imageCheckbox.checked;\r\n-        //     imageField.disabled = !enabled;\r\n-        //     imageField.setAttribute('data-enabled', enabled);\r\n-        //     imageFromUrlField.disabled = enabled;\r\n-        //     imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n-        // }\r\n-        \r\n-        // imageCheckbox.addEventListener('change', toggleFields);\r\n-        // toggleFields();\r\n-\r\n         $('#article_form_enableImageFromUrl').on('change', function () \r\n         {\r\n             \r\n             // $('#article_form_imageFromUrl').attr('disabled', false);\r\n"
+                }
+            ],
+            "date": 1680789697656,
+            "name": "Commit-0",
+            "content": "        var imageCheckbox = document.getElementById('article_form_enableImageFromUrl');\r\n        var imageField = document.getElementById('article_form_image');\r\n        var imageFromUrlField = document.getElementById('article_form_imageFromUrl');\r\n        \r\n        function toggleFields() {\r\n            var enabled = imageCheckbox.checked;\r\n            imageField.disabled = !enabled;\r\n            imageField.setAttribute('data-enabled', enabled);\r\n            imageFromUrlField.disabled = enabled;\r\n            imageFromUrlField.setAttribute('data-enabled', !enabled);\r\n        }\r\n        \r\n        imageCheckbox.addEventListener('change', toggleFields);\r\n        toggleFields();"
+        }
+    ]
+}

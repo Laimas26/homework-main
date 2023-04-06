@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 84,
+            "activePatchIndex": 108,
             "patches": [
                 {
                     "date": 1680525383451,
@@ -344,6 +344,102 @@
                 {
                     "date": 1680705391159,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,8 +71,9 @@\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n+                $article->setUpdatedAt(new \\DateTime());\n \n                 $this->entityManager->persist($article);\n                 $this->entityManager->flush();\n \n"
+                },
+                {
+                    "date": 1680792133442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n-\n+        dd($request->all());\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n             {\n"
+                },
+                {
+                    "date": 1680792138852,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n-        dd($request->all());\n+        dd($request);\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             if($image)\n             {\n"
+                },
+                {
+                    "date": 1680792177825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,11 +37,11 @@\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n-        dd($request);\n         if ($form->isSubmitted() && $form->isValid())\n         {\n+            dd($form);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680796490414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form);\n+            dd($form->getData());\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680796523619,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form->getData());\n+            dd($image);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680796599938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($image);\n+            dd($form->get('imageFromUrl')->getData());\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680796653635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form->get('imageFromUrl')->getData());\n+            dd($image);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680796681047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,10 @@\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n+        $imageFromUrl = $form->get('image')->getData();\n+\n         if ($form->isSubmitted() && $form->isValid())\n         {\n             dd($image);\n             if($image)\n"
+                },
+                {
+                    "date": 1680796800875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,13 +37,13 @@\n         $form = $this->createForm(ArticleFormType::class, $article);\n \n         $form->handleRequest($request);\n         $image = $form->get('image')->getData();\n-        $imageFromUrl = $form->get('image')->getData();\n+        $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($image);\n+            dd($imageFromUrl);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680796849160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($imageFromUrl);\n+            dd($form);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680797137757,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form);\n+            dd($form->all());\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680797278492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form->all());\n+            dd($form->getData());\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680797308998,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form->getData());\n+            dd($request['imageFromUrl']);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680797329651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($request['imageFromUrl']);\n+            dd($request->get('imageFromUrl'));\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680797571717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,8 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($request->get('imageFromUrl'));\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n@@ -69,8 +68,12 @@\n                         return $this->redirectToRoute('home');\n                     }\n                 }\n             }\n+            elseif ($imageFromUrl) \n+            {\n+                dd('ss');\n+            }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n                 $article->setText($form->get('text')->getData());\n"
+                },
+                {
+                    "date": 1680797673427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,8 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n+            dd($article);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680797706225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($article);\n+            dd($form->all());\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n"
+                },
+                {
+                    "date": 1680799504420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($form->all());\n+            dd($imageFromUrl);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n@@ -71,9 +71,9 @@\n                 }\n             }\n             elseif ($imageFromUrl) \n             {\n-                dd('ss');\n+                $article->setImage();\n             }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680799606589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,8 @@\n         $imageFromUrl = $form->get('imageFromUrl')->getData();\n \n         if ($form->isSubmitted() && $form->isValid())\n         {\n-            dd($imageFromUrl);\n             if($image)\n             {\n                 if($article->getImage() != null)\n                 {\n@@ -71,9 +70,14 @@\n                 }\n             }\n             elseif ($imageFromUrl) \n             {\n-                $article->setImage();\n+                if($form->get('title')->getData() != $article->getTitle())\n+                {\n+\n+                }\n+                $article->setImage($imageFromUrl);\n+                $article->setUpdatedAt(new \\DateTime());\n             }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680799651014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,11 +71,13 @@\n             }\n             elseif ($imageFromUrl) \n             {\n                 if($form->get('title')->getData() != $article->getTitle())\n-                {\n+                    $article->setTitle($form->get('title')->getData());\n+                if($form->get('text')->getData() != $article->getText())\n+                    $article->setText($form->get('text')->getData());\n \n-                }\n+\n                 $article->setImage($imageFromUrl);\n                 $article->setUpdatedAt(new \\DateTime());\n             }\n             else\n"
+                },
+                {
+                    "date": 1680799672077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,8 +60,13 @@\n                         } catch (FileException $e) {\n                             return new Response($e->getMessage());\n                         }\n \n+                        if($form->get('title')->getData() != $article->getTitle())\n+                            $article->setTitle($form->get('title')->getData());\n+                        if($form->get('text')->getData() != $article->getText())\n+                            $article->setText($form->get('text')->getData());\n+\n                         $article->setImage('/uploads/' . $newFileName);\n                         $article->setUpdatedAt(new \\DateTime());\n                         $this->entityManager->flush();\n \n"
+                },
+                {
+                    "date": 1680799690270,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -83,8 +83,12 @@\n \n \n                 $article->setImage($imageFromUrl);\n                 $article->setUpdatedAt(new \\DateTime());\n+\n+                $this->entityManager->flush();\n+\n+                return $this->redirectToRoute('home');\n             }\n             else\n             {\n                 $article->setTitle($form->get('title')->getData());\n"
+                },
+                {
+                    "date": 1680799741185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -90,10 +90,15 @@\n                 return $this->redirectToRoute('home');\n             }\n             else\n             {\n-                $article->setTitle($form->get('title')->getData());\n-                $article->setText($form->get('text')->getData());\n+                if($form->get('title')->getData() != $article->getTitle())\n+                    $article->setTitle($form->get('title')->getData());\n+                if($form->get('text')->getData() != $article->getText())\n+                    $article->setText($form->get('text')->getData());\n+\n+                // $article->setTitle($form->get('title')->getData());\n+                // $article->setText($form->get('text')->getData());\n                 $article->setUpdatedAt(new \\DateTime());\n \n                 $this->entityManager->persist($article);\n                 $this->entityManager->flush();\n"
+                },
+                {
+                    "date": 1680799788066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,8 +84,9 @@\n \n                 $article->setImage($imageFromUrl);\n                 $article->setUpdatedAt(new \\DateTime());\n \n+                $this->entityManager->persist($article);\n                 $this->entityManager->flush();\n \n                 return $this->redirectToRoute('home');\n             }\n"
                 }
             ],
             "date": 1680525383451,

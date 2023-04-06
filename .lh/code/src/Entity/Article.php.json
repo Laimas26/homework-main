@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1680702280639,
@@ -28,6 +28,18 @@
                 {
                     "date": 1680706845167,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,5 +92,13 @@\n         $this->updatedAt = $updatedAt;\n \n         return $this;\n     }\n+\n+    /**\n+     * @ORM\\PrePersist\n+     */\n+    public function setUpdatedAtValueOnCreate(): void\n+    {\n+        $this->updatedAt = new \\DateTime();\n+    }\n }\n"
+                },
+                {
+                    "date": 1680798158262,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,11 @@\n \n     #[ORM\\Column(length: 255)]\n     private ?string $image = null;\n \n+    #[ORM\\Column(length: 255)]\n+    private ?string $imageFromUrl = null;\n+\n     #[ORM\\Column(type: 'datetime', nullable:true)]\n     private $updatedAt;\n \n     /**\n"
+                },
+                {
+                    "date": 1680798189474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -103,5 +103,17 @@\n     public function setUpdatedAtValueOnCreate(): void\n     {\n         $this->updatedAt = new \\DateTime();\n     }\n+\n+    public function getImageFromUrl(): ?string\n+    {\n+        return $this->imageFromUrl;\n+    }\n+\n+    public function setImageFromUrl(?string $imageFromUrl): self\n+    {\n+        $this->imageFromUrl = $imageFromUrl;\n+\n+        return $this;\n+    }\n }\n"
+                },
+                {
+                    "date": 1680798324775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,11 +22,8 @@\n \n     #[ORM\\Column(length: 255)]\n     private ?string $image = null;\n \n-    #[ORM\\Column(length: 255)]\n-    private ?string $imageFromUrl = null;\n-\n     #[ORM\\Column(type: 'datetime', nullable:true)]\n     private $updatedAt;\n \n     /**\n@@ -103,17 +100,5 @@\n     public function setUpdatedAtValueOnCreate(): void\n     {\n         $this->updatedAt = new \\DateTime();\n     }\n-\n-    public function getImageFromUrl(): ?string\n-    {\n-        return $this->imageFromUrl;\n-    }\n-\n-    public function setImageFromUrl(?string $imageFromUrl): self\n-    {\n-        $this->imageFromUrl = $imageFromUrl;\n-\n-        return $this;\n-    }\n }\n"
                 }
             ],
             "date": 1680702280639,

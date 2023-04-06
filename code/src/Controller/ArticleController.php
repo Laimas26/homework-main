@@ -38,6 +38,7 @@ class ArticleController extends AbstractController
 
         $form->handleRequest($request);
         $image = $form->get('image')->getData();
+        $imageFromUrl = $form->get('imageFromUrl')->getData();
 
         if ($form->isSubmitted() && $form->isValid())
         {
@@ -60,18 +61,46 @@ class ArticleController extends AbstractController
                             return new Response($e->getMessage());
                         }
 
+                        if($form->get('title')->getData() != $article->getTitle())
+                            $article->setTitle($form->get('title')->getData());
+                        if($form->get('text')->getData() != $article->getText())
+                            $article->setText($form->get('text')->getData());
+
                         $article->setImage('/uploads/' . $newFileName);
                         $article->setUpdatedAt(new \DateTime());
+
+                        $this->entityManager->persist($article);
                         $this->entityManager->flush();
 
                         return $this->redirectToRoute('home');
                     }
                 }
             }
+            elseif ($imageFromUrl) 
+            {
+                if($form->get('title')->getData() != $article->getTitle())
+                    $article->setTitle($form->get('title')->getData());
+                if($form->get('text')->getData() != $article->getText())
+                    $article->setText($form->get('text')->getData());
+
+
+                $article->setImage($imageFromUrl);
+                $article->setUpdatedAt(new \DateTime());
+
+                $this->entityManager->persist($article);
+                $this->entityManager->flush();
+
+                return $this->redirectToRoute('home');
+            }
             else
             {
-                $article->setTitle($form->get('title')->getData());
-                $article->setText($form->get('text')->getData());
+                if($form->get('title')->getData() != $article->getTitle())
+                    $article->setTitle($form->get('title')->getData());
+                if($form->get('text')->getData() != $article->getText())
+                    $article->setText($form->get('text')->getData());
+
+                // $article->setTitle($form->get('title')->getData());
+                // $article->setText($form->get('text')->getData());
                 $article->setUpdatedAt(new \DateTime());
 
                 $this->entityManager->persist($article);

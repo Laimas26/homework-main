@@ -1,0 +1,26 @@
+{
+    "sourceFile": "code/src/EventListener/ArticleFormListener.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1680786447284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680786463028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,8 @@\n+<?php\r\n+\r\n namespace \\App\\EventListener;\r\n+\r\n use Symfony\\Component\\EventDispatcher\\EventSubscriberInterface;\r\n use Symfony\\Component\\Form\\FormEvent;\r\n use Symfony\\Component\\Form\\FormEvents;\r\n \r\n"
+                },
+                {
+                    "date": 1680786485209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\r\n \r\n-namespace \\App\\EventListener;\r\n+namespace App\\EventListener;\r\n \r\n use Symfony\\Component\\EventDispatcher\\EventSubscriberInterface;\r\n use Symfony\\Component\\Form\\FormEvent;\r\n use Symfony\\Component\\Form\\FormEvents;\r\n"
+                }
+            ],
+            "date": 1680786447284,
+            "name": "Commit-0",
+            "content": "namespace \\App\\EventListener;\r\nuse Symfony\\Component\\EventDispatcher\\EventSubscriberInterface;\r\nuse Symfony\\Component\\Form\\FormEvent;\r\nuse Symfony\\Component\\Form\\FormEvents;\r\n\r\nclass ArticleFormListener implements EventSubscriberInterface\r\n{\r\n    public static function getSubscribedEvents()\r\n    {\r\n        return [\r\n            FormEvents::POST_SUBMIT => 'onPostSubmit',\r\n        ];\r\n    }\r\n\r\n    public function onPostSubmit(FormEvent $event)\r\n    {\r\n        $form = $event->getForm();\r\n        $article = $event->getData();\r\n\r\n        // Check if an image was uploaded\r\n        $image = $form->get('image')->getData();\r\n        if ($image) {\r\n            $article->setImage($image);\r\n        }\r\n\r\n        // Check if an image URL was provided\r\n        $imageUrl = $form->get('image_url')->getData();\r\n        if ($imageUrl) {\r\n            $article->setImage($imageUrl);\r\n        }\r\n    }\r\n}"
+        }
+    ]
+}

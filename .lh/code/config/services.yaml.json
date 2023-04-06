@@ -1,0 +1,34 @@
+{
+    "sourceFile": "code/config/services.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1680785257120,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680785364323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,12 @@\n parameters:\n \n services:\n     app.form_listener.my_form:\n-        class: App\\EventListener\\MyFormListener\n+        class: App\\EventListener\\ArticleFormListener\n         tags:\n             - { name: kernel.event_subscriber }\n+\n     # default configuration for services in *this* file\n     _defaults:\n         autowire: true      # Automatically injects dependencies in your services.\n         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.\n"
+                },
+                {
+                    "date": 1680785471822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,10 @@\n # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\n parameters:\n \n services:\n-    app.form_listener.my_form:\n         class: App\\EventListener\\ArticleFormListener\n-        tags:\n-            - { name: kernel.event_subscriber }\n+        tags: kernel.event_subscriber\n \n     # default configuration for services in *this* file\n     _defaults:\n         autowire: true      # Automatically injects dependencies in your services.\n"
+                },
+                {
+                    "date": 1680785500624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n parameters:\n \n services:\n         class: App\\EventListener\\ArticleFormListener\n-        tags: kernel.event_subscriber\n+        tags: [kernel.event_subscriber]\n \n     # default configuration for services in *this* file\n     _defaults:\n         autowire: true      # Automatically injects dependencies in your services.\n"
+                },
+                {
+                    "date": 1680785509311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\n parameters:\n \n services:\n-        class: App\\EventListener\\ArticleFormListener\n+        App\\EventListener\\ArticleFormListener:\n         tags: [kernel.event_subscriber]\n \n     # default configuration for services in *this* file\n     _defaults:\n"
+                }
+            ],
+            "date": 1680785257119,
+            "name": "Commit-0",
+            "content": "# This file is the entry point to configure your own services.\n# Files in the packages/ subdirectory configure your dependencies.\n\n# Put parameters here that don't need to change on each machine where the app is deployed\n# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\nparameters:\n\nservices:\n    app.form_listener.my_form:\n        class: App\\EventListener\\MyFormListener\n        tags:\n            - { name: kernel.event_subscriber }\n    # default configuration for services in *this* file\n    _defaults:\n        autowire: true      # Automatically injects dependencies in your services.\n        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.\n\n    # makes classes in src/ available to be used as services\n    # this creates a service per class whose id is the fully-qualified class name\n    App\\:\n        resource: '../src/'\n        exclude:\n            - '../src/DependencyInjection/'\n            - '../src/Entity/'\n            - '../src/Kernel.php'\n\n    # add more service definitions when explicit configuration is needed\n    # please note that last definitions always *replace* previous ones\n"
+        }
+    ]
+}

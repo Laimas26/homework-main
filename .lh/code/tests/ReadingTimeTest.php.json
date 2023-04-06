@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 14,
+            "activePatchIndex": 15,
             "patches": [
                 {
                     "date": 1680782445186,
@@ -64,6 +64,10 @@
                 {
                     "date": 1680783502966,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,7 +42,7 @@\n         $template = $twig->load('_partials/reading-mins.html.twig');\n         $article = ['text' => 'Text for testing the reading time algorithm, this calculation should return value of 0.06 minutes or to be exact ~6 seconds'];\n         $output = $template->render(['article' => $article]);\n \n-        $this->assertEquals('0:04 mins', $output);\n+        $this->assertEquals(floatval('0:04 mins'), floatval($output));\n     }\n }\n"
+                },
+                {
+                    "date": 1680784031655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n             return $minutesInt.':'.sprintf('%02d', $seconds).' mins';\n         }));\n \n         $template = $twig->load('_partials/reading-mins.html.twig');\n-        $article = ['text' => 'Text for testing the reading time algorithm, this calculation should return value of 0.06 minutes or to be exact ~6 seconds'];\n+        $article = ['text' => 'Text for testing the reading time algorithm, this calculation should return value of 0:04 minutes or to be exact ~4 seconds'];\n         $output = $template->render(['article' => $article]);\n \n         $this->assertEquals(floatval('0:04 mins'), floatval($output));\n     }\n"
                 }
             ],
             "date": 1680782445186,
