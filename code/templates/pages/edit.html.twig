@@ -50,4 +50,12 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/image_upload.js') }}"></script>
+
+    <script>
+    $(document).ready(function() {
+    $('#article_form_imageFromUrl').attr('disabled', true);
+    $('#article_form_image').attr('disabled', true);
+  });
+
+    </script>
 {% endblock %}

@@ -48,7 +48,6 @@ class ArticleFormType extends AbstractType
                     'class' => 'form-control enabledinput',
                 ],
                 'required' => false,
-                // 'disabled' => true,
             ))
             ->add('imageFromUrl', UrlType::class, array(
                 'attr' => [
@@ -56,7 +55,6 @@ class ArticleFormType extends AbstractType
                 ],
                 'required' => false,
                 'mapped' => false,
-                // 'disabled' => true,
             ))
             ->add('save', SubmitType::class, [
                 'attr' => [

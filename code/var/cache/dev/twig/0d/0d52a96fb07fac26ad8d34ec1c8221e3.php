@@ -154,6 +154,14 @@ class __TwigTemplate_790c35b5eedad2322953d0062cbaa070 extends Template
         // line 52
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/image_upload.js"), "html", null, true);
         echo "\"></script>
+
+    <script>
+    \$(document).ready(function() {
+    \$('#article_form_imageFromUrl').attr('disabled', true);
+    \$('#article_form_image').attr('disabled', true);
+  });
+
+    </script>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -229,6 +237,14 @@ class __TwigTemplate_790c35b5eedad2322953d0062cbaa070 extends Template
 {% block javascripts %}
     {{ parent() }}
     <script src=\"{{ asset('js/image_upload.js') }}\"></script>
+
+    <script>
+    \$(document).ready(function() {
+    \$('#article_form_imageFromUrl').attr('disabled', true);
+    \$('#article_form_image').attr('disabled', true);
+  });
+
+    </script>
 {% endblock %}", "pages/edit.html.twig", "/code/templates/pages/edit.html.twig");
     }
 }
