@@ -13,7 +13,8 @@
         <div class="py-5 bg-light">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {% for article in articles %}
+                    {% set sortedArticles = articles|sort((a, b) => b.updatedAt|date('U') <=> a.updatedAt|date('U')) %}
+                    {% for article in sortedArticles %}
                         <div class="col">
                             {% include '_partials/article-card.html.twig' with {
                                 article: article

@@ -70,8 +70,11 @@ class __TwigTemplate_49684e7b83bd33a134527fda4162da3b extends Template
                 <div class=\"row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3\">
                     ";
         // line 16
+        $context["sortedArticles"] = twig_sort_filter($this->env, (isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 16, $this->source); })()), function ($__a__, $__b__) use ($context, $macros) { $context["a"] = $__a__; $context["b"] = $__b__; return (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["b"]) || array_key_exists("b", $context) ? $context["b"] : (function () { throw new RuntimeError('Variable "b" does not exist.', 16, $this->source); })()), "updatedAt", [], "any", false, false, false, 16), "U") <=> twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["a"]) || array_key_exists("a", $context) ? $context["a"] : (function () { throw new RuntimeError('Variable "a" does not exist.', 16, $this->source); })()), "updatedAt", [], "any", false, false, false, 16), "U")); });
+        // line 17
+        echo "                    ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["articles"]) || array_key_exists("articles", $context) ? $context["articles"] : (function () { throw new RuntimeError('Variable "articles" does not exist.', 16, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["sortedArticles"]) || array_key_exists("sortedArticles", $context) ? $context["sortedArticles"] : (function () { throw new RuntimeError('Variable "sortedArticles" does not exist.', 17, $this->source); })()));
         $context['loop'] = [
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -86,13 +89,13 @@ class __TwigTemplate_49684e7b83bd33a134527fda4162da3b extends Template
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["article"]) {
-            // line 17
+            // line 18
             echo "                        <div class=\"col\">
                             ";
-            // line 18
-            $this->loadTemplate("_partials/article-card.html.twig", "pages/index.html.twig", 18)->display(twig_array_merge($context, ["article" =>             // line 19
+            // line 19
+            $this->loadTemplate("_partials/article-card.html.twig", "pages/index.html.twig", 19)->display(twig_array_merge($context, ["article" =>             // line 20
 $context["article"]]));
-            // line 21
+            // line 22
             echo "                        </div>
                     ";
             ++$context['loop']['index0'];
@@ -107,7 +110,7 @@ $context["article"]]));
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 23
+        // line 24
         echo "                </div>
             </div>
         </div>
@@ -130,7 +133,7 @@ $context["article"]]));
 
     public function getDebugInfo()
     {
-        return array (  111 => 23,  96 => 21,  94 => 19,  93 => 18,  90 => 17,  73 => 16,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  114 => 24,  99 => 22,  97 => 20,  96 => 19,  93 => 18,  75 => 17,  73 => 16,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -150,7 +153,8 @@ $context["article"]]));
         <div class=\"py-5 bg-light\">
             <div class=\"container\">
                 <div class=\"row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3\">
-                    {% for article in articles %}
+                    {% set sortedArticles = articles|sort((a, b) => b.updatedAt|date('U') <=> a.updatedAt|date('U')) %}
+                    {% for article in sortedArticles %}
                         <div class=\"col\">
                             {% include '_partials/article-card.html.twig' with {
                                 article: article
